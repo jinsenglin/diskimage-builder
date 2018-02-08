@@ -11,5 +11,15 @@ yum -y install libguestfs-tools
 yum -y install libvirt
 service libvirtd start
 
+export LIBGUESTFS_BACKEND=direct
 virt-df -a centos7-baremetal.raw
+
+#guestmount -a centos7-baremetal.raw -m /dev/sda1 --rw /tmp/tmp-img/
+#mount --bind /dev /tmp/tmp-img/dev
+
+#cd /tmp
+#chroot tmp-img/
+#PATH==$PATH:/bin
+#mount -t proc proc /proc
+#mount -t sysfs sys sys/
 ```
