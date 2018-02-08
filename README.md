@@ -22,4 +22,9 @@ virt-df -a centos7-baremetal.raw
 #PATH==$PATH:/bin
 #mount -t proc proc /proc
 #mount -t sysfs sys sys/
+
+#mount --bind /proc /target/proc
+#mount --bind /dev /target/dev
+#mount --bind /sys /target/sys
+#chroot /target
 ```
