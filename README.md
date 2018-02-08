@@ -1,3 +1,4 @@
+```
 yum -y install epel-release
 yum -y update
 yum -y install python-pip
@@ -11,3 +12,4 @@ yum -y install libvirt
 service libvirtd start
 
 virt-df -a centos7-baremetal.raw
+```
