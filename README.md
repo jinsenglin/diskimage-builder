@@ -70,8 +70,9 @@ cd /tmp
 wget --no-check-certificate https://download.cirros-cloud.net/0.3.2/cirros-0.3.2-x86_64-disk.img
 chown qemu:qemu cirros-0.3.2-x86_64-disk.img
 
-yum -y install virt-install virt-viewer
+yum -y install virt-install virt-viewer seabios-bin
 virt-install --connect=qemu:///system --name=cirros --ram=512 --vcpus=1 --disk path=cirros-0.3.2-x86_64-disk.img,format=qcow2 --import --network network:default --vnc
+ls /etc/libvirt/qemu/cirros.xml
 ```
 
 # Addiontional Resources
