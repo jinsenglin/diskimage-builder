@@ -49,7 +49,7 @@ virt-df -a centos7-baremetal.raw
 #chroot /target
 
 # [ losetup ] + [ kpartx ]
-losetup -f
+losetup -f # result: /dev/loop0
 losetup /dev/loop0 centos7-baremetal.raw
 kpartx -av /dev/loop0
 ls -l /dev/mapper/loop0p*
