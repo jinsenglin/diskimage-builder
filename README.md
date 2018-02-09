@@ -47,6 +47,17 @@ virt-df -a centos7-baremetal.raw
 #mount --bind /dev /target/dev
 #mount --bind /sys /target/sys
 #chroot /target
+
+# [ losetup ] + [ kpartx ]
+losetup -f
+losetup /dev/loop0 centos7-baremetal.raw
+kpartx -av /dev/loop0
+ls -l /dev/mapper/loop0p*
+mount /dev/mapper/loop0p1 /mnt
+ls /mnt
+umount /mnt
+kpartx -d /dev/loop0
+losetup -d /dev/loop0
 ```
 
 # Addiontional Resources
