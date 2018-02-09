@@ -59,6 +59,13 @@ kpartx -d /dev/loop0
 losetup -d /dev/loop0
 ```
 
+```
+# REF http://accelazh.github.io/virtualization/Play-With-Libvirt-KVM
+
+yum -y install virt-install
+virt-install --connect=qemu:///system --name=cirros --ram=512 --vcpus=1 --disk path=cirros-0.3.2-x86_64-disk.img,format=qcow2 --import --network network:default --vnc
+```
+
 # Addiontional Resources
 
 * create image https://docs.openstack.org/image-guide/centos-image.html
