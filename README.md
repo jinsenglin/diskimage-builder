@@ -46,6 +46,10 @@ mount --bind /sys /mnt/sys
 chroot /mnt
 ls /home
 exit
+umount /mnt/sys
+umount /mnt/dev
+umount /mnt/proc
+guestunmount /mnt #OR umount /mnt
 
 # Modify Method 5 :: [ losetup ] + [ kpartx ]
 losetup -f # result: /dev/loop0
