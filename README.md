@@ -5,7 +5,12 @@ yum -y install python-pip
 
 pip install diskimage-builder
 yum -y install qemu-img
-DIC_CLOUD_INIT_DATASOURCES="ConfigDrive" disk-image-create -t raw centos7 vm dhcp-all-interfaces grub2 -o centos7-baremetal
+
+export DIB_DEV_USER_PWDLESS_SUDO="yes"
+export DIB_DEV_USER_USERNAME="cclin"
+export DIB_DEV_USER_PASSWORD="cclin"
+export DIC_CLOUD_INIT_DATASOURCES="ConfigDrive"
+disk-image-create -t raw centos7 vm dhcp-all-interfaces grub2 -o centos7-baremetal
 
 yum -y install libguestfs-tools
 yum -y install libvirt
