@@ -74,8 +74,10 @@ yum -y install virt-install virt-viewer seabios-bin
 virt-install --connect=qemu:///system --name=cirros --ram=512 --vcpus=1 --disk path=cirros-0.3.2-x86_64-disk.img,format=qcow2 --import --network network:default --vnc
 ^z
 bg
-ls /etc/libvirt/qemu/cirros.xml
-ps aux | grep qemu-kvm
+
+# virsh list
+# ls /etc/libvirt/qemu/cirros.xml
+# ps aux | grep qemu-kvm
 
 # virsh
 # console cirros
