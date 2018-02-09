@@ -26,6 +26,14 @@ virt-df -a centos7-baremetal.raw
 #export LIBGUESTFS_BACKEND=direct
 #virt-edit -a centos7-baremetal.raw /etc/hosts
 
+# [ guestmount ]
+#export LIBGUESTFS_BACKEND=direct
+#guestmount -a centos7-baremetal.raw -m /dev/sda1 --ro /mnt
+#ls /mnt
+#umount /mnt
+
+# [ guestmount ] + [ chroot ]
+
 #guestmount -a centos7-baremetal.raw -m /dev/sda1 --rw /tmp/tmp-img/
 #mount --bind /dev /tmp/tmp-img/dev
 
