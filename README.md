@@ -64,6 +64,14 @@ losetup -d /dev/loop0
 ```
 
 ```
+cp centos7-baremetal.raw /tmp
+cd /tmp
+chown qemu:qemu centos7-baremetal.raw
+
+virt-install --connect=qemu:///system --name=centos7 --ram=512 --vcpus=1 --disk path=centos7-baremetal.raw,format=raw --import --network network:default --vnc
+```
+
+```
 # REF http://accelazh.github.io/virtualization/Play-With-Libvirt-KVM
 
 cd /tmp
