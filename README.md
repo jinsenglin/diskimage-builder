@@ -10,7 +10,7 @@ export DIB_DEV_USER_PWDLESS_SUDO="yes"
 export DIB_DEV_USER_USERNAME="cclin"
 export DIB_DEV_USER_PASSWORD="cclin"
 export DIC_CLOUD_INIT_DATASOURCES="ConfigDrive"
-disk-image-create -t raw centos7 vm dhcp-all-interfaces grub2 -o centos7-baremetal
+disk-image-create -t raw centos7 vm dhcp-all-interfaces grub2 selinux-permissive -o centos7-baremetal
 
 yum -y install libguestfs-tools
 yum -y install libvirt
@@ -64,3 +64,4 @@ losetup -d /dev/loop0
 * create image https://docs.openstack.org/image-guide/centos-image.html
 * create image https://docs.openstack.org/image-guide/create-images-automatically.html
 * modify image https://docs.openstack.org/image-guide/modify-images.html
+* https://github.com/openstack/octavia/blob/master/diskimage-create/diskimage-create.sh
