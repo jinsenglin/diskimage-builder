@@ -5,6 +5,8 @@ sudo su
 ```
 
 ```
+# working dir: /home/vagrant
+
 yum -y install epel-release
 yum -y update
 yum -y install python-pip
