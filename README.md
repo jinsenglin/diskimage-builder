@@ -153,8 +153,8 @@ cat > user-data <<USERDATA
 #cloud-config
 chpasswd:
   list: |
-    root:password
-    cloud-user:atomic
+    root:pass2000
+    centos:pass2000
   expire: False
 ssh_pwauth: True
 USERDATA
