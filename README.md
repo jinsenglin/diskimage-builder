@@ -19,8 +19,8 @@ export DIB_DEV_USER_USERNAME="cclin"
 export DIB_DEV_USER_PASSWORD="cclin"
 
 # Build Option 1
-# - with grub2 inside base image
-# - with openssh-server inside base image
+# - with "grub2" element inside base image
+# - with "openssh-server" element inside base image
 # - use "/var/lib/cloud/seed/nocloud/{meta-data,user-data}" for cloud-init datasource
 disk-image-create -t raw centos7 vm dhcp-all-interfaces enable-serial-console selinux-permissive devuser cloud-init-nocloud -o centos7-baremetal
 
