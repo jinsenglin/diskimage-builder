@@ -23,7 +23,10 @@ disk-image-create -t raw centos7 vm dhcp-all-interfaces grub2 enable-serial-cons
 
 # Build Option 2
 export DIC_CLOUD_INIT_DATASOURCES="ConfigDrive"
-disk-image-create -t raw centos7 vm dhcp-all-interfaces grub2 enable-serial-console selinux-permissive devuser -o centos7-baremetal
+disk-image-create -t raw centos7 vm dhcp-all-interfaces grub2 enable-serial-console selinux-permissive devuser openssh-server -o centos7-baremetal
+
+# Build option 3
+
 
 # cache dir: /root/.cache/image-create
 # base image: http://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz
