@@ -132,10 +132,12 @@ bg
 ## to modify image on first boot
 
 cd /var/lib/cloud/seed/nocloud
+
 cat > meta-data <<METADATA
 instance-id: iid-local01
 local-hostname: centos7
 METADATA
+
 cat > user-data <<USERDATA
 #cloud-config
 password: passw0rd
