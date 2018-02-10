@@ -172,3 +172,4 @@ USERDATA
 * inject root password http://madorn.com/cloud-init-admin-pass.html#.Wn6wNJP1XBI
 * inject root password http://blog.csdn.net/sinat_22597285/article/details/76981218
 * inject root password https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_atomic_host/7/html/installation_and_configuration_guide/setting_up_cloud_init
+* inject root password https://zhangchenchen.github.io/2017/01/13/openstack-init-instance-password/
