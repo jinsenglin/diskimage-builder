@@ -2,3 +2,4 @@ epel
 package-installs
 install-static
 install-bin
+pip-and-virtualenv
