@@ -144,3 +144,4 @@ printf "#cloud-config\npassword: passw0rd\nchpasswd: { expire: False }\nssh_pwau
 * modify image https://docs.openstack.org/image-guide/modify-images.html
 * https://github.com/openstack/octavia/blob/master/diskimage-create/diskimage-create.sh
 * nocloud http://cloudinit.readthedocs.io/en/latest/topics/datasources/nocloud.html
+* inject root password http://madorn.com/cloud-init-admin-pass.html#.Wn6wNJP1XBI
