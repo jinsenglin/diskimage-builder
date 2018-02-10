@@ -19,12 +19,18 @@ export DIB_DEV_USER_USERNAME="cclin"
 export DIB_DEV_USER_PASSWORD="cclin"
 
 # Build Option 1
+# - testing my own element
+mkdir /home/vagrant/cclin
+export ELEMENTS_PATH=/home/vagrant
+disk-image-create -t raw centos7 vm dhcp-all-interfaces devuser cloud-init-nocloud cclin -o centos7-baremetal
+
+# Build Option 2
 # - with "grub2" element inside base image
 # - with "openssh-server" element inside base image
 # - use "/var/lib/cloud/seed/nocloud/{meta-data,user-data}" for cloud-init datasource
 disk-image-create -t raw centos7 vm dhcp-all-interfaces enable-serial-console selinux-permissive devuser cloud-init-nocloud -o centos7-baremetal
 
-# Build Option 2
+# Build Option 3
 # - use "ConfigDrive" for cloud-init datasource
 export DIC_CLOUD_INIT_DATASOURCES="ConfigDrive"
 disk-image-create -t raw centos7 vm dhcp-all-interfaces enable-serial-console selinux-permissive devuser -o centos7-baremetal
@@ -174,3 +180,4 @@ USERDATA
 * inject root password https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_atomic_host/7/html/installation_and_configuration_guide/setting_up_cloud_init
 * inject root password https://zhangchenchen.github.io/2017/01/13/openstack-init-instance-password/
 * element of driver type https://github.com/openstack/diskimage-builder/tree/master/diskimage_builder/elements/mellanox
+* ELEMENTS_PATH https://docs.openstack.org/diskimage-builder/latest/developer/invocation.html
