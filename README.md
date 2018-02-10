@@ -18,10 +18,14 @@ export DIB_DEV_USER_PWDLESS_SUDO="yes"
 export DIB_DEV_USER_USERNAME="cclin"
 export DIB_DEV_USER_PASSWORD="cclin"
 
+# Build Option 1
+disk-image-create -t raw centos7 vm dhcp-all-interfaces grub2 enable-serial-console selinux-permissive devuser cloud-init-nocloud -o centos7-baremetal
+
+# Build Option 2
 export DIC_CLOUD_INIT_DATASOURCES="ConfigDrive"
 disk-image-create -t raw centos7 vm dhcp-all-interfaces grub2 enable-serial-console selinux-permissive devuser -o centos7-baremetal
 
-disk-image-create -t raw centos7 vm dhcp-all-interfaces grub2 enable-serial-console selinux-permissive devuser cloud-init-nocloud -o centos7-baremetal
+# cache dir: /root/.cache/image-create
 
 yum -y install libguestfs-tools
 yum -y install libvirt
