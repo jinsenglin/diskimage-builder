@@ -181,4 +181,5 @@ USERDATA
 * inject root password https://zhangchenchen.github.io/2017/01/13/openstack-init-instance-password/
 * element of driver type https://github.com/openstack/diskimage-builder/tree/master/diskimage_builder/elements/mellanox
 * ELEMENTS_PATH https://docs.openstack.org/diskimage-builder/latest/developer/invocation.html
-* Phase Subdirectories https://docs.openstack.org/diskimage-builder/latest/developer/developing_elements.html
+* Element Phase Subdirectories https://docs.openstack.org/diskimage-builder/latest/developer/developing_elements.html
+* Element Dependencies https://docs.openstack.org/diskimage-builder/latest/developer/developing_elements.html
