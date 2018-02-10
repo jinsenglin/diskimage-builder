@@ -133,20 +133,19 @@ bg
 cd /var/lib/cloud/seed/nocloud
 
 cat > meta-data <<METADATA
-instance-id: iid-local01
 local-hostname: centos7
 METADATA
+
+## will setup hostname "centos7"
 
 cat > user-data <<USERDATA
 #cloud-config
 password: passw0rd
-chpasswd:
-  list: |
-    user1:pass1
-    user2:RANDOM
-  expire: False
+chpasswd: { expire: False }
 ssh_pwauth: True
 USERDATA
+
+## will setup password "passw0rd" for user specified in the /etc/cloud/cloud.cfg , which means "centos" in this case
 
 cat > user-data <<USERDATA
 #cloud-config
@@ -158,10 +157,8 @@ chpasswd:
 ssh_pwauth: True
 USERDATA
 
-## will setup hostname "centos7"
-## will setup password "passw0rd" for user specified in the /etc/cloud/cloud.cfg , which means "centos" in this case
-## will setup password "pass1" for user "user1"
-## will setup random password for user "user2"
+## will setup password "pass2000" for user "root"
+## will setup password "pass2000" for user "centos"
 ```
 
 # Addiontional Resources
