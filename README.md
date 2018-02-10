@@ -121,8 +121,7 @@ bg
 # virsh
 # destroy cirros
 # exit
-# rm /etc/libvirt/qemu/cirros.xml
-# virsh -c qemu:///system undefine cirros
+# virsh -c qemu:///system undefine cirros # will remove /etc/libvirt/qemu/cirros.xml too
 ```
 
 ```
