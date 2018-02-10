@@ -80,7 +80,7 @@ guestunmount /mnt #OR umount /mnt
 # Modify Method 5 :: [ losetup ] + [ kpartx ]
 losetup -f # result: /dev/loop0
 losetup /dev/loop0 centos7-baremetal.raw
-kpartx -av /dev/loop0
+kpartx -av /dev/loop0 # result: add map loop0p1 (253:3): 0 3886464 linear /dev/loop0 2048
 ls -l /dev/mapper/loop0p*
 mount /dev/mapper/loop0p1 /mnt
 ls /mnt
@@ -123,6 +123,13 @@ bg
 # exit
 # rm /etc/libvirt/qemu/cirros.xml
 # virsh -c qemu:///system undefine cirros
+```
+
+```
+# inside centos7-baremetal.raw
+
+/var/lib/cloud/seed/nocloud/user-data
+/var/lib/cloud/seed/nocloud/meta-data
 ```
 
 # Addiontional Resources
