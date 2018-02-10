@@ -19,14 +19,15 @@ export DIB_DEV_USER_USERNAME="cclin"
 export DIB_DEV_USER_PASSWORD="cclin"
 
 # Build Option 1
-disk-image-create -t raw centos7 vm dhcp-all-interfaces grub2 enable-serial-console selinux-permissive devuser cloud-init-nocloud -o centos7-baremetal
+# - with grub2 inside base image
+# - with openssh-server inside base image
+# - use "/var/lib/cloud/seed/nocloud/{meta-data,user-data}" for cloud-init datasource
+disk-image-create -t raw centos7 vm dhcp-all-interfaces enable-serial-console selinux-permissive devuser cloud-init-nocloud -o centos7-baremetal
 
 # Build Option 2
+# - use "ConfigDrive" for cloud-init datasource
 export DIC_CLOUD_INIT_DATASOURCES="ConfigDrive"
-disk-image-create -t raw centos7 vm dhcp-all-interfaces grub2 enable-serial-console selinux-permissive devuser openssh-server -o centos7-baremetal
-
-# Build option 3
-
+disk-image-create -t raw centos7 vm dhcp-all-interfaces enable-serial-console selinux-permissive devuser -o centos7-baremetal
 
 # cache dir: /root/.cache/image-create
 # base image: http://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz
