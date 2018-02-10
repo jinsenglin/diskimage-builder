@@ -132,3 +132,4 @@ bg
 * create image https://docs.openstack.org/image-guide/create-images-automatically.html
 * modify image https://docs.openstack.org/image-guide/modify-images.html
 * https://github.com/openstack/octavia/blob/master/diskimage-create/diskimage-create.sh
+* nocloud http://cloudinit.readthedocs.io/en/latest/topics/datasources/nocloud.html
