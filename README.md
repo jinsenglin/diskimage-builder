@@ -39,6 +39,12 @@ service libvirtd start
 export LIBGUESTFS_BACKEND=direct
 virt-df -a centos7-baremetal.raw
 
+# Sample Output
+#
+# Filesystem                           1K-blocks       Used  Available  Use%
+# centos7-baremetal.raw:/dev/sda1        1781200    1142992     523716   65%
+#
+
 # Modify Method 1 :: [ guestfish ]
 export LIBGUESTFS_BACKEND=direct
 guestfish --ro -a centos7-baremetal.raw
