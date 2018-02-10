@@ -128,8 +128,12 @@ bg
 ```
 # inside centos7-baremetal.raw
 
-/var/lib/cloud/seed/nocloud/user-data
-/var/lib/cloud/seed/nocloud/meta-data
+## create user-data and meta-data files that will be used
+## to modify image on first boot
+
+cd /var/lib/cloud/seed/nocloud
+{ echo instance-id: iid-local01; echo local-hostname: cloudimg; } > meta-data
+printf "#cloud-config\npassword: passw0rd\nchpasswd: { expire: False }\nssh_pwauth: True\n" > user-data
 ```
 
 # Addiontional Resources
