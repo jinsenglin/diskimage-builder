@@ -1,2 +1,3 @@
 package-installs
 install-static
+install-bin
