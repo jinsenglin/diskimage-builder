@@ -145,7 +145,7 @@ chpasswd: { expire: False }
 ssh_pwauth: True
 USERDATA
 
-## will setup password "passw0rd" for user specified in the /etc/cloud/cloud.cfg , which means "centos" in this case
+## will setup password "passw0rd" for the cloud user specified in the /etc/cloud/cloud.cfg , which means "centos" in this case
 
 cat > user-data <<USERDATA
 #cloud-config
@@ -157,8 +157,8 @@ chpasswd:
 ssh_pwauth: True
 USERDATA
 
-## will setup password "pass2000" for user "root"
-## will setup password "pass2000" for user "centos"
+## will setup password "pass2000" for existing user "root"
+## will setup password "pass2000" for existing user "centos"
 ```
 
 # Addiontional Resources
