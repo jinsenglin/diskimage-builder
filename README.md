@@ -104,6 +104,7 @@ bg
 
 # Addiontional Resources
 
+* https://docs.openstack.org/diskimage-builder/latest/
 * create image https://docs.openstack.org/image-guide/centos-image.html
 * create image https://docs.openstack.org/image-guide/create-images-automatically.html
 * modify image https://docs.openstack.org/image-guide/modify-images.html
