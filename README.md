@@ -35,7 +35,7 @@ yum -y install libguestfs-tools
 yum -y install libvirt
 service libvirtd start
 
-# [ virt-df ] 
+# Inspect Method 1 :: [ virt-df ] 
 export LIBGUESTFS_BACKEND=direct
 virt-df -a centos7-baremetal.raw
 
