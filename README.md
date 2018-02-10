@@ -132,8 +132,25 @@ bg
 ## to modify image on first boot
 
 cd /var/lib/cloud/seed/nocloud
-{ echo instance-id: iid-local01; echo local-hostname: cloudimg; } > meta-data
-printf "#cloud-config\npassword: passw0rd\nchpasswd: { expire: False }\nssh_pwauth: True\n" > user-data
+cat > meta-data <<METADATA
+instance-id: iid-local01
+local-hostname: centos7
+METADATA
+cat > user-data <<USERDATA
+#cloud-config
+password: passw0rd
+chpasswd:
+  list: |
+    user1:pass1
+    user2:RANDOM
+  expire: False
+ssh_pwauth: True
+USERDATA
+
+## will setup hostname "centos7"
+## will setup password "passw0rd" for user specified in the /etc/cloud/cloud.cfg , which means "centos" in this case
+## will setup password "pass1" for user "user1"
+## will setup random password for user "user2"
 ```
 
 # Addiontional Resources
