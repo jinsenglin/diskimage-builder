@@ -164,3 +164,4 @@ USERDATA
 * https://github.com/openstack/octavia/blob/master/diskimage-create/diskimage-create.sh
 * nocloud http://cloudinit.readthedocs.io/en/latest/topics/datasources/nocloud.html
 * inject root password http://madorn.com/cloud-init-admin-pass.html#.Wn6wNJP1XBI
+* inject root password http://blog.csdn.net/sinat_22597285/article/details/76981218
