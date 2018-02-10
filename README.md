@@ -149,6 +149,16 @@ chpasswd:
 ssh_pwauth: True
 USERDATA
 
+cat > user-data <<USERDATA
+#cloud-config
+chpasswd:
+  list: |
+    root:password
+    cloud-user:atomic
+  expire: False
+ssh_pwauth: True
+USERDATA
+
 ## will setup hostname "centos7"
 ## will setup password "passw0rd" for user specified in the /etc/cloud/cloud.cfg , which means "centos" in this case
 ## will setup password "pass1" for user "user1"
@@ -165,3 +175,4 @@ USERDATA
 * nocloud http://cloudinit.readthedocs.io/en/latest/topics/datasources/nocloud.html
 * inject root password http://madorn.com/cloud-init-admin-pass.html#.Wn6wNJP1XBI
 * inject root password http://blog.csdn.net/sinat_22597285/article/details/76981218
+* inject root password https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_atomic_host/7/html/installation_and_configuration_guide/setting_up_cloud_init
