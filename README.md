@@ -177,7 +177,7 @@ cp centos7-baremetal.raw /tmp
 cd /tmp
 chown qemu:qemu centos7-baremetal.raw
 
-qemu-system-x86_64 centos7-baremetal.raw -vnc :0
+qemu-system-x86_64 centos7-baremetal.raw -vnc none
 ```
 
 # Addiontional Resources
@@ -203,3 +203,4 @@ qemu-system-x86_64 centos7-baremetal.raw -vnc :0
 * sample download then install rpm https://github.com/openstack/diskimage-builder/blob/master/diskimage_builder/elements/proliant-tools/install.d/65-proliant-tools-install
 * initrd initramfs rootfs http://blog.linux.org.tw/~jserv/archives/001954.html
 * qemu-system-x86_64 vnc https://www.cyberciti.biz/faq/linux-kvm-vnc-for-guest-machine/
+* qemu-system-x86_64 vnc https://gnu-linux.org/creating-a-qemu-system-image-and-working-with-it-using-ssh-login.html
