@@ -5,7 +5,7 @@ Source: https://docs.openstack.org/diskimage-builder/latest/developer/design.htm
 ---
 
 ```
-{BIOS , UEFI} :: POST
+{BIOS, UEFI} :: POST
     CHOOSE BOOT DEVICE {CD-ROM, HDD, NETWORK} :: LOCATE {MBR, BOOT SECTOR} :: LOAD BOOT LOADER
 
 BOOT LOADER {LILO, GRUB, GRUB2, PXELINUX, SYSLINUX, ISOLINUX, EXTLINUX} :: LOAD KERNEL
