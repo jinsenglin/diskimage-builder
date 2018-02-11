@@ -207,3 +207,4 @@ qemu-system-x86_64 centos7-baremetal.raw -vnc :1 # netstat -plnt | grep 5901
 * qemu-system-x86_64 vnc https://gnu-linux.org/creating-a-qemu-system-image-and-working-with-it-using-ssh-login.html
 * cobbler distro add clonezilla vmlinuz initrd filesystem.squashfs http://cobbler.github.io/manuals/2.4.0/5/13_-_Clonezilla_Integration.html
 * debootstrap https://github.com/KingBing/blog-src/blob/master/%E4%BD%BF%E7%94%A8%20debootstrap%20%E5%BB%BA%E7%AB%8B%E5%AE%8C%E6%95%B4%E7%9A%84%20Debian%20%E7%B3%BB%E7%B5%B1.org
+* mksquashfs unsquashfs http://blog.xuite.net/ahdeng/life/19689236-%E8%AE%93Linux+Kernel%E6%94%AF%E6%8F%B4Squash+Filesystem
