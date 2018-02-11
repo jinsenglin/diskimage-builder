@@ -171,10 +171,6 @@ USERDATA
 ```
 
 ```
-cp centos7-baremetal.raw /tmp
-cd /tmp
-chown qemu:qemu centos7-baremetal.raw
-
 yum -y install qemu-system-x86
 
 qemu-system-x86_64 centos7-baremetal.raw -nographic
