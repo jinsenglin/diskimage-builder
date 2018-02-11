@@ -177,7 +177,7 @@ cp centos7-baremetal.raw /tmp
 cd /tmp
 chown qemu:qemu centos7-baremetal.raw
 
-qemu-system-x86_64 centos7-baremetal.raw,format=raw -vnc :0
+qemu-system-x86_64 centos7-baremetal.raw -vnc :0
 ```
 
 # Addiontional Resources
