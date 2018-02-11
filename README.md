@@ -170,6 +170,16 @@ USERDATA
 ## will setup password "pass2000" for existing user "centos"
 ```
 
+```
+yum -y install qemu-system-x86
+
+cp centos7-baremetal.raw /tmp
+cd /tmp
+chown qemu:qemu centos7-baremetal.raw
+
+qemu-system-x86_64 centos7-baremetal.raw,format=raw -vnc :0
+```
+
 # Addiontional Resources
 
 * https://docs.openstack.org/diskimage-builder/latest/
@@ -192,3 +202,4 @@ USERDATA
 * sample environment.d/99-ele https://github.com/openstack/diskimage-builder/blob/master/diskimage_builder/elements/devuser/environment.d/50-devuser
 * sample download then install rpm https://github.com/openstack/diskimage-builder/blob/master/diskimage_builder/elements/proliant-tools/install.d/65-proliant-tools-install
 * initrd initramfs rootfs http://blog.linux.org.tw/~jserv/archives/001954.html
+* qemu-system-x86_64 vnc https://www.cyberciti.biz/faq/linux-kvm-vnc-for-guest-machine/
