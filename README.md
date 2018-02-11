@@ -21,9 +21,10 @@ export DIB_DEV_USER_PASSWORD="cclin"
 # Build Option 1
 # - testing my own element
 mkdir /home/vagrant/cclin
-export ELEMENTS_PATH=/home/vagrant
+export DIB_OFFLINE=1
 export DIB_DEBUG_TRACE=1
 export OVERWRITE_OLD_IMAGE=1
+export ELEMENTS_PATH=/home/vagrant
 disk-image-create -t raw centos7 vm dhcp-all-interfaces devuser cloud-init-nocloud cclin -o centos7-baremetal
 
 # Build Option 2
