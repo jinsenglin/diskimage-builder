@@ -210,3 +210,4 @@ qemu-system-x86_64 centos7-baremetal.raw -vnc :1 # netstat -plnt | grep 5901
 * debootstrap https://github.com/KingBing/blog-src/blob/master/%E4%BD%BF%E7%94%A8%20debootstrap%20%E5%BB%BA%E7%AB%8B%E5%AE%8C%E6%95%B4%E7%9A%84%20Debian%20%E7%B3%BB%E7%B5%B1.org
 * mksquashfs unsquashfs http://blog.xuite.net/ahdeng/life/19689236-%E8%AE%93Linux+Kernel%E6%94%AF%E6%8F%B4Squash+Filesystem
 * mkisofs genisoimage http://linux-guys.blogspot.tw/2011/01/mkisofs-genisoimage.html
+* cirros nocloud https://serverfault.com/questions/646326/how-do-i-disable-the-metadata-lookup-at-cirros-boot
