@@ -205,3 +205,4 @@ qemu-system-x86_64 centos7-baremetal.raw -vnc :1 # netstat -plnt | grep 5901
 * initrd initramfs rootfs http://blog.linux.org.tw/~jserv/archives/001954.html
 * qemu-system-x86_64 vnc https://www.cyberciti.biz/faq/linux-kvm-vnc-for-guest-machine/
 * qemu-system-x86_64 vnc https://gnu-linux.org/creating-a-qemu-system-image-and-working-with-it-using-ssh-login.html
+* cobbler clonezilla filesystem.squashfs vmlinuz initrd http://cobbler.github.io/manuals/2.4.0/5/13_-_Clonezilla_Integration.html
