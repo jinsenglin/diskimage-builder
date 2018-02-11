@@ -190,4 +190,5 @@ USERDATA
 * Element Dependencies https://docs.openstack.org/diskimage-builder/latest/developer/developing_elements.html
 * sample install.d/99-ele https://github.com/openstack/diskimage-builder/blob/master/diskimage_builder/elements/devuser/install.d/50-devuser
 * sample environment.d/99-ele https://github.com/openstack/diskimage-builder/blob/master/diskimage_builder/elements/devuser/environment.d/50-devuser
+* sample download then install rpm https://github.com/openstack/diskimage-builder/blob/master/diskimage_builder/elements/proliant-tools/install.d/65-proliant-tools-install
 * initrd initramfs rootfs http://blog.linux.org.tw/~jserv/archives/001954.html
