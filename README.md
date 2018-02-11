@@ -171,13 +171,18 @@ USERDATA
 ```
 
 ```
-yum -y install qemu-system-x86
-
 cp centos7-baremetal.raw /tmp
 cd /tmp
 chown qemu:qemu centos7-baremetal.raw
 
-qemu-system-x86_64 centos7-baremetal.raw -vnc none
+yum -y install qemu-system-x86
+
+qemu-system-x86_64 centos7-baremetal.raw -nographic
+
+yum -y install vnc-server
+
+qemu-system-x86_64 centos7-baremetal.raw -vnc :0 # netstat -plnt | grep 5900
+qemu-system-x86_64 centos7-baremetal.raw -vnc :1 # netstat -plnt | grep 5901
 ```
 
 # Addiontional Resources
