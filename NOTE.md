@@ -14,3 +14,15 @@ KERNEL {VMLINUX, VMLINUZ, INITRD, INITRAMFS} :: CHANGE ROOTFS AND RUN INIT
 
 init {sysvinit, upstart, systemd}
 ```
+
+---
+
+在 boot loader 中指定 kernel , initrd , 以及 rootfs e.g.,
+
+```
+KERNEL=vmlinuz-2.6.32-5-686
+INITRD=initrd.img-2.6.32-5-686
+APPEND="root=/dev/sda2 ro "
+IMG=qemu.img
+qemu -kernel $KERNEL -initrd $INITRD -append "$APPEND"  -hda $IMG
+```
