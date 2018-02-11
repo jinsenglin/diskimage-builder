@@ -23,6 +23,7 @@ export DIB_DEV_USER_PASSWORD="cclin"
 mkdir /home/vagrant/cclin
 export ELEMENTS_PATH=/home/vagrant
 export DIB_DEBUG_TRACE=1
+export OVERWRITE_OLD_IMAGE=1
 disk-image-create -t raw centos7 vm dhcp-all-interfaces devuser cloud-init-nocloud cclin -o centos7-baremetal
 
 # Build Option 2
@@ -181,6 +182,7 @@ USERDATA
 * inject root password https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_atomic_host/7/html/installation_and_configuration_guide/setting_up_cloud_init
 * inject root password https://zhangchenchen.github.io/2017/01/13/openstack-init-instance-password/
 * element of driver type https://github.com/openstack/diskimage-builder/tree/master/diskimage_builder/elements/mellanox
+* OVERWRITE_OLD_IMAGE https://docs.openstack.org/diskimage-builder/latest/developer/invocation.html
 * DIB_OFFLINE https://docs.openstack.org/diskimage-builder/latest/developer/caches.html
 * ELEMENTS_PATH https://docs.openstack.org/diskimage-builder/latest/developer/invocation.html
 * Element Phase Subdirectories https://docs.openstack.org/diskimage-builder/latest/developer/developing_elements.html
