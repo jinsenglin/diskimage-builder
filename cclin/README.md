@@ -1,5 +1,7 @@
 use element `epel` to install yum repo `epel`
 
+use element `dkms` to install package `dkms`
+
 use element `install-static` to install configuration `/etc/ccln/`
 
 use element `install-bin` to install command line `/usr/loca/bin/cclin`
