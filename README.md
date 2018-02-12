@@ -189,6 +189,17 @@ qemu-system-x86_64 centos7-baremetal.raw -vnc :1 # netstat -plnt | grep 5901
 ```
 
 ```
+pip install python-openstackclient==3.2.1
+pip install openstacksdk==0.9.5
+pip install osc-lib==1.1.0
+pip install keystoneauth1==2.12.3
+pip install python-novaclient==6.0.0
+pip install python-keystoneclient==3.5.0
+pip install python-glanceclient==2.5.0
+pip install python-cinderclient==1.9.0
+pip install os-client-config==1.21.1
+pip install python-neutronclient==6.0.0
+
 openstack image create --container-format bare --disk-format raw --unprotected --public --tag baremetal --file centos7-baremetal.raw cclin-centos7-baremetal
 ```
 
