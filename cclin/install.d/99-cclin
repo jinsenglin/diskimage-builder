@@ -18,16 +18,9 @@ ls $(dirname $0)
 # rpm -i nvidia-diag-driver-local-repo-rhel7-390.12-1.0-1.x86_64.rpm
 # yum clean all
 # yum -y install cuda-drivers
-# reboot
-#
-# nvidia-smi
 #
 
-# patch cloud-init (hack CentOS-7-x86_64-GenericCloud.qcow2.xz.tgz)
-#
-# SRCDIR=$(dirname $0)
-# install -D -g root -o root -m 0755 ${SRCDIR}/patch-cloudinit/cloud.cfg /etc/cloud/cloud.cfg
-# install -D -g root -o root ${SRCDIR}/patch-cloudinit/cc_set_passwords.py /usr/lib/python2.7/site-packages/cloudinit/config/cc_set_passwords.py
+# hack CentOS-7-x86_64-GenericCloud.qcow2.xz.tgz :: /usr/lib/python2.7/site-packages/cloudinit/config/cc_set_passwords.py
 #
 # AS-IS
 #
