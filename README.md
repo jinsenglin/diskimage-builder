@@ -25,7 +25,7 @@ export DIB_OFFLINE=1
 export DIB_DEBUG_TRACE=1
 export OVERWRITE_OLD_IMAGE=1
 export ELEMENTS_PATH=/home/vagrant # built-in elements /usr/lib/python2.7/site-packages/diskimage_builder/elements
-disk-image-create -t raw centos7 vm dhcp-all-interfaces devuser cloud-init-nocloud cclin -o centos7-baremetal
+disk-image-create -t raw centos7 vm dhcp-all-interfaces enable-serial-console selinux-permissive devuser cloud-init-nocloud cclin -o centos7-baremetal
 
 # Build Option 2
 # - with "grub2" element inside base image
