@@ -31,15 +31,63 @@ ls $(dirname $0)
 #
 # AS-IS
 #
-# def handle(_name, cfg, cloud, log, args):
+def handle(_name, cfg, cloud, log, args):
+    if len(args) != 0:
+        # if run from command line, and give args, wipe the chpasswd['list']
+        password = args[0]
+        if 'chpasswd' in cfg and 'list' in cfg['chpasswd']:
+            del cfg['chpasswd']['list']
+    else:
+        password = util.get_cfg_option_str(cfg, "password", None)
+
+    expire = True
+    plist = None
+
+    if 'chpasswd' in cfg:
+        chfg = cfg['chpasswd']
+        plist = util.get_cfg_option_str(chfg, 'list', plist)
+        expire = util.get_cfg_option_bool(chfg, 'expire', expire)
+
+    if not plist and password:
+        (users, _groups) = ug_util.normalize_users_groups(cfg, cloud.distro)
+        (user, _user_config) = ug_util.extract_default(users)
+        if user:
+            plist = "%s:%s" % (user, password)
+        else:
+            log.warn("No default or defined user to change password for.")
 #
 # TO-BE
 #
-# def handle(_name, cfg, cloud, log, args):
-# 
-#    #use admin_pass key from metadata
-#    if not password:
-#        metadata = cloud.datasource.metadata
-#        if metadata and 'admin_pass' in metadata:
-#            password = metadata['admin_pass']
+def handle(_name, cfg, cloud, log, args):
+    if len(args) != 0:
+        # if run from command line, and give args, wipe the chpasswd['list']
+        password = args[0]
+        if 'chpasswd' in cfg and 'list' in cfg['chpasswd']:
+            del cfg['chpasswd']['list']
+    else:
+        password = util.get_cfg_option_str(cfg, "password", None)
+
+    # HACK :: use admin_pass key from metadata
+    if not password:
+        metadata = cloud.datasource.metadata
+        if metadata and 'admin_pass' in metadata:
+            password = metadata['admin_pass']
+
+    expire = True
+    plist = None
+
+    if 'chpasswd' in cfg:
+        chfg = cfg['chpasswd']
+        plist = util.get_cfg_option_str(chfg, 'list', plist)
+        expire = util.get_cfg_option_bool(chfg, 'expire', expire)
+
+    if not plist and password:
+        (users, _groups) = ug_util.normalize_users_groups(cfg, cloud.distro)
+        (user, _user_config) = ug_util.extract_default(users)
+        if user:
+            plist = "%s:%s" % (user, password)
+            # HACK :: change root's password
+            plist = plist + "\nroot:%s" % password
+        else:
+            log.warn("No default or defined user to change password for.")
 #
