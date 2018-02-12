@@ -21,3 +21,10 @@ pwd
 #
 # nvidia-smi
 #
+
+# update grub2.cfg
+#
+# sed -i 's/tty0/tty1/' /etc/default/grub
+# sed -i 's/ttyS0/ttyS1/' /etc/default/grub
+# grub2-mkconfig -o /boot/grub2/grub.cfg
+#
