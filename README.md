@@ -36,6 +36,8 @@ disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devus
 # Build Option 3
 # - use "ConfigDrive" for cloud-init datasource
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
+mkdir /home/vagrant/cclin
+export ELEMENTS_PATH=/home/vagrant
 disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cclin -o centos7-baremetal --image-size 3
 
 # cache dir: /root/.cache/image-create
