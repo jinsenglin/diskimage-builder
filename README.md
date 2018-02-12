@@ -55,6 +55,11 @@ virt-df -a centos7-baremetal.raw
 # centos7-baremetal.raw:/dev/sda1        1781200    1142992     523716   65%
 #
 
+# To Resize /dev/sda1 at build time phase
+#
+# TODO
+#
+
 # Modify Method 1 :: [ guestfish ]
 export LIBGUESTFS_BACKEND=direct
 guestfish --ro -a centos7-baremetal.raw
