@@ -189,6 +189,7 @@ qemu-system-x86_64 centos7-baremetal.raw -vnc :1 # netstat -plnt | grep 5901
 ```
 
 ```
+# v3.1
 pip install python-openstackclient==3.2.1
 pip install openstacksdk==0.9.5
 pip install osc-lib==1.1.0
