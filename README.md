@@ -35,7 +35,7 @@ disk-image-create -t raw centos7 vm dhcp-all-interfaces enable-serial-console se
 
 # Build Option 3
 # - use "ConfigDrive" for cloud-init datasource
-export DIC_CLOUD_INIT_DATASOURCES="ConfigDrive"
+export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
 disk-image-create -t raw centos7 vm dhcp-all-interfaces enable-serial-console selinux-permissive devuser -o centos7-baremetal
 
 # cache dir: /root/.cache/image-create
