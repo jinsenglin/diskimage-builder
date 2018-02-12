@@ -1,0 +1,8 @@
+# Origin https://github.com/openstack/diskimage-builder/blob/master/diskimage_builder/elements/bootloader/finalise.d/50-bootloader
+
+# AS-IS
+    SERIAL_CONSOLE="ttyS0,115200"
+    GRUB_CMDLINE_LINUX_DEFAULT="console=tty0 console=${SERIAL_CONSOLE} no_timer_check"
+# TO-BE
+    SERIAL_CONSOLE="ttyS1,115200"
+    GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=${SERIAL_CONSOLE} no_timer_check"
