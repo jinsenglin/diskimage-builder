@@ -203,6 +203,7 @@ pip install python-cinderclient==1.9.0
 pip install os-client-config==1.21.1
 pip install python-neutronclient==6.0.0
 
+openstack image delete cclin-centos7-baremetal
 openstack image create --container-format bare --disk-format raw --unprotected --public --tag baremetal --file centos7-baremetal.raw cclin-centos7-baremetal
 ```
 
