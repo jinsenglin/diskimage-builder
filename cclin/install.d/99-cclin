@@ -23,7 +23,7 @@ ls $(dirname $0)
 # nvidia-smi
 #
 
-# patch cloud-init
+# patch cloud-init (hack CentOS-7-x86_64-GenericCloud.qcow2.xz.tgz)
 #
 # SRCDIR=$(dirname $0)
 # install -D -g root -o root -m 0755 ${SRCDIR}/patch-cloudinit/cloud.cfg /etc/cloud/cloud.cfg
