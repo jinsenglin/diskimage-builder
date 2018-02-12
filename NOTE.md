@@ -26,3 +26,7 @@ APPEND="root=/dev/sda2 ro "
 IMG=qemu.img
 qemu -kernel $KERNEL -initrd $INITRD -append "$APPEND"  -hda $IMG
 ```
+
+Additional Resources
+
+* kernel boot parameter https://wiki.archlinux.org/index.php/kernel_parameters
