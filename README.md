@@ -25,19 +25,19 @@ export DIB_OFFLINE=1
 export DIB_DEBUG_TRACE=1
 export OVERWRITE_OLD_IMAGE=1
 export ELEMENTS_PATH=/home/vagrant # built-in elements /usr/lib/python2.7/site-packages/diskimage_builder/elements
-disk-image-create -t raw centos7 vm dhcp-all-interfaces enable-serial-console selinux-permissive devuser cloud-init-nocloud cclin -o centos7-baremetal
+disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud cclin -o centos7-baremetal
 
 # Build Option 2
 # - with "grub2" element inside base image
 # - with "openssh-server" element inside base image
 # - use "/var/lib/cloud/seed/nocloud/{meta-data,user-data}" for cloud-init datasource
-disk-image-create -t raw centos7 vm dhcp-all-interfaces enable-serial-console selinux-permissive devuser cloud-init-nocloud -o centos7-baremetal
+disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud -o centos7-baremetal
 
 # Build Option 3
 # - use "ConfigDrive" for cloud-init datasource
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
-export DIB_BOOTLOADER_DEFAULT_CMDLINE="nofb nomodeset vga=normal console=tty1 console=ttyS1"
-disk-image-create --image-size 3 -t raw centos7 vm dhcp-all-interfaces enable-serial-console selinux-permissive devuser cclin -o centos7-baremetal
+export DIB_BOOTLOADER_DEFAULT_CMDLINE="console=tty1 console=ttyS1"
+disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cclin -o centos7-baremetal --image-size 3
 
 # cache dir: /root/.cache/image-create
 # base image: http://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz
