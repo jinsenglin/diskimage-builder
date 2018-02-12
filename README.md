@@ -57,7 +57,7 @@ virt-df -a centos7-baremetal.raw
 
 # To Resize /dev/sda1 at build time phase
 #
-# TODO
+# --image-size 3
 #
 
 # Modify Method 1 :: [ guestfish ]
