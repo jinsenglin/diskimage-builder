@@ -45,7 +45,18 @@ yum -y install libguestfs-tools
 yum -y install libvirt
 service libvirtd start
 
-# Inspect Method 1 :: [ virt-df ] 
+# Inspect Method 1 :: [ qemu-img ]
+qemu-img centos7-baremetal.raw
+
+# Sample Output
+#
+# image: /home/vagrant/centos7-baremetal.raw
+# file format: raw
+# virtual size: 3.0G (3221225472 bytes)
+# disk size: 2.9G
+# 
+
+# Inspect Method 2 :: [ virt-df ]
 export LIBGUESTFS_BACKEND=direct
 virt-df -a centos7-baremetal.raw
 
