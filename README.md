@@ -59,6 +59,8 @@ virt-df -a centos7-baremetal.raw
 #
 # --image-size 3
 #
+# centos7-baremetal.raw:/dev/sda1        2881392    1187332    1520492   42%
+#
 
 # Modify Method 1 :: [ guestfish ]
 export LIBGUESTFS_BACKEND=direct
