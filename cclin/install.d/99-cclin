@@ -29,3 +29,17 @@ ls $(dirname $0)
 # install -D -g root -o root -m 0755 ${SRCDIR}/patch-cloudinit/cloud.cfg /etc/cloud/cloud.cfg
 # install -D -g root -o root ${SRCDIR}/patch-cloudinit/cc_set_passwords.py /usr/lib/python2.7/site-packages/cloudinit/config/cc_set_passwords.py
 #
+# AS-IS
+#
+# def handle(_name, cfg, cloud, log, args):
+#
+# TO-BE
+#
+# def handle(_name, cfg, cloud, log, args):
+# 
+#    #use admin_pass key from metadata
+#    if not password:
+#        metadata = cloud.datasource.metadata
+#        if metadata and 'admin_pass' in metadata:
+#            password = metadata['admin_pass']
+#
