@@ -6,7 +6,7 @@ use element `install-static` to install configuration `/etc/ccln/`
 
 use element `install-bin` to install command line `/usr/loca/bin/cclin`
 
-use element `package-installs` to install package `jq`
+use element `package-installs` to install package `jq`, `kernel-devel`, `kernel-headers`
 
 use element `pip-and-virtualenv` to install package `python-pip` and `python-virtualenv`
 
