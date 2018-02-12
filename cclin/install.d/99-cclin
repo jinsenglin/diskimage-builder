@@ -10,6 +10,7 @@ set -o pipefail
 pwd
 
 # install nvidia tesla k80 driver
+#
 # yum -y install dkms
 # yum -y install kernel-devel kernel-headers
 # wget http://192.168.241.198/drivers/nvidia-diag-driver-local-repo-rhel7-390.12-1.0-1.x86_64.rpm
@@ -17,4 +18,6 @@ pwd
 # yum clean all
 # yum -y install cuda-drivers
 # reboot
+#
 # nvidia-smi
+#
