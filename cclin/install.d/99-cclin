@@ -28,3 +28,10 @@ pwd
 # sed -i 's/ttyS0/ttyS1/' /etc/default/grub
 # grub2-mkconfig -o /boot/grub2/grub.cfg
 #
+
+# patch cloud-init
+#
+# SRCDIR=$(dirname $0)
+# install -D -g root -o root -m 0755 ${SRCDIR}/cloud.cfg /etc/cloud/cloud.cfg
+# install -D -g root -o root ${SRCDIR}/cc_set_passwords.py /usr/lib/python2.7/site-packages/cloudinit/config/cc_set_passwords.py
+#
