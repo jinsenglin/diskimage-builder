@@ -188,6 +188,10 @@ qemu-system-x86_64 centos7-baremetal.raw -vnc :0 # netstat -plnt | grep 5900
 qemu-system-x86_64 centos7-baremetal.raw -vnc :1 # netstat -plnt | grep 5901
 ```
 
+```
+openstack image create --container-format bare --disk-format raw --unprotected --public --tag baremetal --file centos7-baremetal.raw cclin-centos7-baremetal
+```
+
 # Addiontional Resources
 
 * https://docs.openstack.org/diskimage-builder/latest/
