@@ -16,4 +16,12 @@ export DIB_BLOCK_DEVICE_CONFIG='
                 options: "defaults"
                 fsck-passno: 1
         - name: home
-          size: 100%'
+          flags: [ primary ]
+          size: 100%
+          mkfs:
+            type: ext4
+            label: cloudimg-homefs
+            mount:
+              mount_point: /home
+              fstab:
+                options: "defaults"'
