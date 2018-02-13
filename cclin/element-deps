@@ -1,5 +1,4 @@
 epel
-dkms
 package-installs
 install-static
 install-bin
