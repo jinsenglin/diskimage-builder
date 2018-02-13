@@ -59,8 +59,11 @@ disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devus
 # cache dir: /root/.cache/image-create
 # base image: http://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz
 
+# install libguestfs-tools
+#
 yum -y install libguestfs-tools libvirt
 service libvirtd start
+#
 
 # Inspect Method 1 :: [ qemu-img ]
 qemu-img centos7-baremetal.raw
