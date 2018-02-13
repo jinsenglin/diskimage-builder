@@ -280,6 +280,7 @@ openstack image create --container-format bare --disk-format raw --unprotected -
 # Addiontional Resources
 
 * https://docs.openstack.org/diskimage-builder/latest/
+* create image https://docs.openstack.org/project-install-guide/baremetal/draft/configure-glance-images.html
 * create image https://docs.openstack.org/image-guide/centos-image.html
 * create image https://docs.openstack.org/image-guide/create-images-automatically.html
 * modify image https://docs.openstack.org/image-guide/modify-images.html
