@@ -285,7 +285,7 @@ openstack image create --container-format bare --disk-format raw --unprotected -
 * create image https://docs.openstack.org/image-guide/centos-image.html
 * create image https://docs.openstack.org/image-guide/create-images-automatically.html
 * modify image https://docs.openstack.org/image-guide/modify-images.html
-* https://github.com/openstack/octavia/blob/master/diskimage-create/diskimage-create.sh
+* dib wrapper https://github.com/openstack/octavia/blob/master/diskimage-create/diskimage-create.sh
 * nocloud http://cloudinit.readthedocs.io/en/latest/topics/datasources/nocloud.html
 * inject root password http://madorn.com/cloud-init-admin-pass.html#.Wn6wNJP1XBI
 * inject root password http://blog.csdn.net/sinat_22597285/article/details/76981218
