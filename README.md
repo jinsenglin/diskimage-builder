@@ -260,6 +260,19 @@ qemu-system-x86_64 centos7-baremetal.raw -vnc :1 # netstat -plnt | grep 5901
 ```
 
 ```
+qemu-system-x86_64 -nographic -kernel centos7-baremetal.vmlinuz -initrd centos7-baremetal.initrd -m 512 -append noapic -append console=ttyS0
+```
+
+```
+REF http://lockett.altervista.org/linuxboot/linuxboot.html
+
+# Boot With initramfs
+qemu-system-x86_64 -kernel bzImage -initrd initramfs.cpio -m 512
+qemu-system-x86_64 -kernel bzImage -initrd initramfs.cpio -m 512 -append noapic
+qemu-system-x86_64 -kernel bzImage -initrd initramfs.cpio -m 512 -nographic -append console=ttyS0
+```
+
+```
 # v3.1
 yum -y group install "Development Tools"
 yum -y install python-devel
