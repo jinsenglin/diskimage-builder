@@ -19,6 +19,12 @@ yum -y install python-pip qemu-img
 pip install diskimage-builder
 #
 
+# pin base image version
+#
+# wget https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud-1503.qcow2.xz
+# export DIB_CLOUD_IMAGES=$PWD/CentOS-7-x86_64-GenericCloud-1503.qcow2.xz
+#
+
 export DIB_OFFLINE=1
 export DIB_DEBUG_TRACE=1
 export OVERWRITE_OLD_IMAGE=1
