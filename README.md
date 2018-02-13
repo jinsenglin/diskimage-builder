@@ -303,6 +303,7 @@ openstack image create --container-format bare --disk-format raw --unprotected -
 * sample download then install rpm https://github.com/openstack/diskimage-builder/blob/master/diskimage_builder/elements/proliant-tools/install.d/65-proliant-tools-install
 * initrd initramfs rootfs http://blog.linux.org.tw/~jserv/archives/001954.html
 * bootloader kernel initrd /dev/ram0 init mount rootfs chroot /sbin/init http://kezeodsnx.pixnet.net/blog/post/25371285-%E6%88%91%E4%B9%9F%E4%BE%86%E5%AF%ABinitrd
+* initramfs http://nairobi-embedded.org/initramfs_tutorial.html
 * qemu-system-x86_64 vnc https://www.cyberciti.biz/faq/linux-kvm-vnc-for-guest-machine/
 * qemu-system-x86_64 vnc https://gnu-linux.org/creating-a-qemu-system-image-and-working-with-it-using-ssh-login.html
 * cobbler distro add clonezilla vmlinuz initrd filesystem.squashfs http://cobbler.github.io/manuals/2.4.0/5/13_-_Clonezilla_Integration.html
