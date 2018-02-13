@@ -41,6 +41,14 @@ mkdir /home/vagrant/nvidia-tesla-k80-driver
 export ELEMENTS_PATH=/home/vagrant
 disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-tesla-k80-driver -o centos7-baremetal --image-size 3
 
+# Build Option 4
+# - use "ConfigDrive" for cloud-init datasource
+export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
+mkdir /home/vagrant/cloud-init-patch
+mkdir /home/vagrant/nvidia-cuda-toolkit
+export ELEMENTS_PATH=/home/vagrant
+disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-cuda-toolkit -o centos7-baremetal --image-size 3
+
 # cache dir: /root/.cache/image-create
 # base image: http://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz
 
