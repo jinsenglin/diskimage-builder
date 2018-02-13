@@ -295,3 +295,4 @@ openstack image create --container-format bare --disk-format raw --unprotected -
 * mkisofs genisoimage http://linux-guys.blogspot.tw/2011/01/mkisofs-genisoimage.html
 * cirros nocloud https://serverfault.com/questions/646326/how-do-i-disable-the-metadata-lookup-at-cirros-boot
 * grub-probe http://edoceo.com/notabene/grub-probe-error-cannot-find-device-for-root
+* make rootfs http://www.tldp.org/HOWTO/Bootdisk-HOWTO/buildroot.html
