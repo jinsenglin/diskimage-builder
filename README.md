@@ -260,7 +260,7 @@ qemu-system-x86_64 centos7-baremetal.raw -vnc :1 # netstat -plnt | grep 5901
 ```
 
 ```
-qemu-system-x86_64 -nographic -kernel centos7-baremetal.vmlinuz -initrd centos7-baremetal.initrd -m 512 -append noapic -append console=ttyS0
+qemu-system-x86_64 -nographic -kernel centos7-baremetal.vmlinuz -initrd centos7-baremetal.initrd -append console=ttyS0
 ```
 
 ```
