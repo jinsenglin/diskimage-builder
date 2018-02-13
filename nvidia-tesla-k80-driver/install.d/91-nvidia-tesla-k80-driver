@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ ${DIB_DEBUG_TRACE:-0} -gt 0 ]; then
+    set -x
+fi
+set -eu
+set -o pipefail
+
+# install nvidia tesla k80 driver
+#
+wget http://192.168.241.198/drivers/nvidia-diag-driver-local-repo-rhel7-390.12-1.0-1.x86_64.rpm
+rpm -i nvidia-diag-driver-local-repo-rhel7-390.12-1.0-1.x86_64.rpm
+yum clean all
+yum -y install cuda-drivers
+rm -f nvidia-diag-driver-local-repo-rhel7-390.12-1.0-1.x86_64.rpm
+#
