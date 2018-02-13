@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ ${DIB_DEBUG_TRACE:-0} -gt 0 ]; then
+    set -x
+fi
+set -eu
+set -o pipefail
+
+# patch cloud-init
+#
+patch -F 0 -f /usr/lib/python2.7/site-packages/cloudinit/config/cc_set_passwords.py < $(dirname $0)/cc_set_passwords.py.patch
+#
+# NOTE: this patch file is created by `diff -Naur cc_set_passwords.py cc_set_passwords_rev.py > cc_set_passwords.py.patch`.
+# NOTE: this patch file is only applied when cc_set_passwords.py is not changed.
