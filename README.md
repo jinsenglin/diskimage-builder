@@ -30,13 +30,16 @@ pip install diskimage-builder
 # source DIB_BLOCK_DEVICE_CONFIG-for-vm-of-2-partitions
 #
 
-export DIB_OFFLINE=1
 export DIB_DEBUG_TRACE=1
+export DIB_OFFLINE=1
 export OVERWRITE_OLD_IMAGE=1
 
 export DIB_DEV_USER_PWDLESS_SUDO="yes"
 export DIB_DEV_USER_USERNAME="cclin"
 export DIB_DEV_USER_PASSWORD="cclin"
+
+# Build Option 0
+disk-image-create -t raw centos7 vm -o centos7-baremetal
 
 # Build Option 1 - to test custom element "cclin"
 # - use "/var/lib/cloud/seed/nocloud/{meta-data,user-data}" for cloud-init datasource
