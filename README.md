@@ -40,6 +40,7 @@ export DIB_DEV_USER_PASSWORD="cclin"
 
 # Build Option 0
 disk-image-create -t raw centos7 vm -o centos7-baremetal
+disk-image-create -t raw centos7 vm selinux-permissive devuser cloud-init-nocloud -o centos7-baremetal
 
 # Build Option 1 - to test custom element "cclin"
 # - use "/var/lib/cloud/seed/nocloud/{meta-data,user-data}" for cloud-init datasource
