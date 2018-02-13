@@ -39,8 +39,8 @@ export DIB_DEV_USER_USERNAME="cclin"
 export DIB_DEV_USER_PASSWORD="cclin"
 
 # Build Option 0
-disk-image-create -t raw centos7 baremetal -o centos7-baremetal # The partition image command creates .qcow2, .vmlinuz and .initrd files.
-disk-image-create -t raw centos7 vm -o centos7-baremetal
+disk-image-create -t raw centos7 baremetal -o centos7-baremetal # The partition image command creates .raw, .vmlinuz and .initrd files.
+disk-image-create -t raw centos7 vm -o centos7-baremetal # The whole disk image command creates .raw file.
 disk-image-create -t raw centos7 vm selinux-permissive devuser cloud-init-nocloud -o centos7-baremetal
 
 # Build Option 1 - to test custom element "cclin"
