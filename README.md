@@ -27,7 +27,7 @@ pip install diskimage-builder
 
 # change disk image layout
 #
-# source DIB_BLOCK_DEVICE_CONFIG-for-vm
+# source DIB_BLOCK_DEVICE_CONFIG-for-vm-of-2-partitions
 #
 
 export DIB_OFFLINE=1
