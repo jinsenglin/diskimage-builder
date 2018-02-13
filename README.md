@@ -1,75 +1,65 @@
 ```
+# vagrant host
+
 vagrant up
 vagrant ssh
+```
+
+```
+# vagrant guest
+# working dir /home/vagrant
+
 sudo su
-```
 
-```
-# working dir: /home/vagrant
-
+# install diskimage-builder
+#
 yum -y install epel-release
 yum -y update
-yum -y install python-pip
-
+yum -y install python-pip qemu-img
 pip install diskimage-builder
-yum -y install qemu-img
+#
+
+export DIB_OFFLINE=1
+export DIB_DEBUG_TRACE=1
+export OVERWRITE_OLD_IMAGE=1
 
 export DIB_DEV_USER_PWDLESS_SUDO="yes"
 export DIB_DEV_USER_USERNAME="cclin"
 export DIB_DEV_USER_PASSWORD="cclin"
 
-# Build Option 1
-# - testing my own element
-mkdir /home/vagrant/cclin
-export DIB_OFFLINE=1
-export DIB_DEBUG_TRACE=1
-export OVERWRITE_OLD_IMAGE=1
-export ELEMENTS_PATH=/home/vagrant # built-in elements /usr/lib/python2.7/site-packages/diskimage_builder/elements
+# Build Option 1 - to test custom element "cclin"
+# - use "/var/lib/cloud/seed/nocloud/{meta-data,user-data}" for cloud-init datasource
+export ELEMENTS_PATH=/vagrant/elements # built-in elements reside in /usr/lib/python2.7/site-packages/diskimage_builder/elements
 disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud cclin -o centos7-baremetal
 
 # Build Option 2
-# - with "grub2" element inside base image
-# - with "openssh-server" element inside base image
-# - use "/var/lib/cloud/seed/nocloud/{meta-data,user-data}" for cloud-init datasource
-disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud -o centos7-baremetal
+# - use "ConfigDrive" for cloud-init datasource
+export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
+export ELEMENTS_PATH=/vagrant/elements
+disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-tesla-k80-driver -o centos7-baremetal --image-size 3
 
 # Build Option 3
 # - use "ConfigDrive" for cloud-init datasource
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
-mkdir /home/vagrant/cloud-init-patch
-mkdir /home/vagrant/nvidia-tesla-k80-driver
-export ELEMENTS_PATH=/home/vagrant
-disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-tesla-k80-driver -o centos7-baremetal --image-size 3
+export ELEMENTS_PATH=/vagrant/elements
+disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-cuda-toolkit -o centos7-baremetal --image-size 5
 
 # Build Option 4
 # - use "ConfigDrive" for cloud-init datasource
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
-mkdir /home/vagrant/cloud-init-patch
-mkdir /home/vagrant/nvidia-cuda-toolkit
-export ELEMENTS_PATH=/home/vagrant
-disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-cuda-toolkit -o centos7-baremetal --image-size 5
+export ELEMENTS_PATH=/vagrant/elements
+disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-cudnn-library -o centos7-baremetal --image-size 5
 
 # Build Option 5
 # - use "ConfigDrive" for cloud-init datasource
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
-mkdir /home/vagrant/cloud-init-patch
-mkdir /home/vagrant/nvidia-cudnn-library
-export ELEMENTS_PATH=/home/vagrant
-disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-cudnn-library -o centos7-baremetal --image-size 5
-
-# Build Option 6
-# - use "ConfigDrive" for cloud-init datasource
-export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
-mkdir /home/vagrant/cloud-init-patch
-mkdir /home/vagrant/nvidia-docker
-export ELEMENTS_PATH=/home/vagrant
+export ELEMENTS_PATH=/vagrant/elements
 disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-docker -o centos7-baremetal --image-size 5
 
 # cache dir: /root/.cache/image-create
 # base image: http://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz
 
-yum -y install libguestfs-tools
-yum -y install libvirt
+yum -y install libguestfs-tools libvirt
 service libvirtd start
 
 # Inspect Method 1 :: [ qemu-img ]
