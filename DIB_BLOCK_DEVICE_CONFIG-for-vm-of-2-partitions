@@ -8,10 +8,12 @@ export DIB_BLOCK_DEVICE_CONFIG='
       partitions:
         - name: root
           flags: [ boot, primary ]
-          size: 100%
+          size: 50%
           mkfs:
             mount:
               mount_point: /
               fstab:
                 options: "defaults"
-                fsck-passno: 1'
+                fsck-passno: 1
+        - name: home
+          size: 100%'
