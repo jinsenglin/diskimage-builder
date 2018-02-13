@@ -39,6 +39,7 @@ export DIB_DEV_USER_USERNAME="cclin"
 export DIB_DEV_USER_PASSWORD="cclin"
 
 # Build Option 0
+disk-image-create -t raw centos7 baremetal -o centos7-baremetal
 disk-image-create -t raw centos7 vm -o centos7-baremetal
 disk-image-create -t raw centos7 vm selinux-permissive devuser cloud-init-nocloud -o centos7-baremetal
 
