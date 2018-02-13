@@ -1,0 +1,10 @@
+export DIB_BLOCK_DEVICE_CONFIG='
+  - local_loop:
+      name: image0
+      mkfs:
+        name: mkfs_root
+        mount:
+          mount_point: /
+          fstab:
+            options: "defaults"
+            fsck-passno: 1'
