@@ -8,7 +8,7 @@ export DIB_BLOCK_DEVICE_CONFIG='
       partitions:
         - name: root
           flags: [ boot, primary ]
-          size: 50%
+          size: 90%
           mkfs:
             mount:
               mount_point: /
