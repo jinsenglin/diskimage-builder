@@ -33,24 +33,29 @@ export ELEMENTS_PATH=/vagrant/elements # built-in elements reside in /usr/lib/py
 disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud cclin -o centos7-baremetal
 
 # Build Option 2
-# - use "ConfigDrive" for cloud-init datasource
-export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
+# - use "/var/lib/cloud/seed/nocloud/{meta-data,user-data}" for cloud-init datasource
 export ELEMENTS_PATH=/vagrant/elements
-disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-tesla-k80-driver -o centos7-baremetal --image-size 3
+disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud docker -o centos7-baremetal
 
 # Build Option 3
 # - use "ConfigDrive" for cloud-init datasource
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
 export ELEMENTS_PATH=/vagrant/elements
-disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-cuda-toolkit -o centos7-baremetal --image-size 5
+disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-tesla-k80-driver -o centos7-baremetal --image-size 3
 
 # Build Option 4
 # - use "ConfigDrive" for cloud-init datasource
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
 export ELEMENTS_PATH=/vagrant/elements
-disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-cudnn-library -o centos7-baremetal --image-size 5
+disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-cuda-toolkit -o centos7-baremetal --image-size 5
 
 # Build Option 5
+# - use "ConfigDrive" for cloud-init datasource
+export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
+export ELEMENTS_PATH=/vagrant/elements
+disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-cudnn-library -o centos7-baremetal --image-size 5
+
+# Build Option 6
 # - use "ConfigDrive" for cloud-init datasource
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
 export ELEMENTS_PATH=/vagrant/elements
