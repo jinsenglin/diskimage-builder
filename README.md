@@ -330,3 +330,16 @@ openstack image create --container-format bare --disk-format raw --unprotected -
 * cirros nocloud https://serverfault.com/questions/646326/how-do-i-disable-the-metadata-lookup-at-cirros-boot
 * grub-probe http://edoceo.com/notabene/grub-probe-error-cannot-find-device-for-root
 * make rootfs http://www.tldp.org/HOWTO/Bootdisk-HOWTO/buildroot.html
+
+.
+
+* http://docs.linuxtone.org/ebooks/Dell/ipmitool.pdf
+* https://www.ibm.com/support/knowledgecenter/en/linuxonibm/liaai.ipmi/liaaiipmitoolsol.htm
+* http://divideoverflow.com/2016/07/Configuring_IPMI_on_OVH_server/
+* console tty ttys pty
+* https://bimsj.idv.tw/blog/2016/08/07/linux-kvm%E7%9A%84-virsh-console-%E9%80%A3%E6%8E%A5%E8%99%9B%E6%93%AC%E6%A9%9F/
+* https://wiki.archlinux.org/index.php/working_with_the_serial_console
+* https://nfolamp.wordpress.com/2010/08/16/mounting-raw-image-files-and-kpartx/
+* https://zh.wikipedia.org/wiki/Loop%E8%AE%BE%E5%A4%87
+* http://handingsky.blogspot.tw/2012/02/kernel-initrd-root-filesystem.html
+* http://www.tldp.org/HOWTO/Bootdisk-HOWTO/buildroot.html
