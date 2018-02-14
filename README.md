@@ -260,7 +260,12 @@ qemu-system-x86_64 centos7-baremetal.raw -vnc :1 # netstat -plnt | grep 5901
 ```
 
 ```
+# boot with kernel, initrd
 qemu-system-x86_64 -nographic -kernel centos7-baremetal.vmlinuz -initrd centos7-baremetal.initrd -m 512 -append console=ttyS0
+init 0
+
+# boot with kernel, initrd, rootfs
+qemu-system-x86_64 -nographic -kernel centos7-baremetal.vmlinuz -initrd centos7-baremetal.initrd -hda centos7-baremetal.raw -m 512 -append "root=/dev/sda console=ttyS0"
 init 0
 
 REF http://lockett.altervista.org/linuxboot/linuxboot.html
