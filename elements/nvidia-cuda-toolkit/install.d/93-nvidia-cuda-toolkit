@@ -10,8 +10,8 @@ set -o pipefail
 #
 DIB_NVIDIA_CUDA_TOOLKIT=${DIB_NVIDIA_CUDA_TOOLKIT:-http://192.168.241.198/cuda-toolkit/9.1/cuda-repo-rhel7-9.1.85-1.x86_64.rpm}
 wget ${DIB_NVIDIA_CUDA_TOOLKIT}
-rpm -i $(basename ${DIB_NVIDIA_CUDA_TOOLKIT})
-yum clean all
-yum -y install cuda
-rm -f $(basename ${DIB_NVIDIA_CUDA_TOOLKIT})
+#rpm -i $(basename ${DIB_NVIDIA_CUDA_TOOLKIT})
+#yum clean all
+#yum -y install cuda
+#rm -f $(basename ${DIB_NVIDIA_CUDA_TOOLKIT})
 #
