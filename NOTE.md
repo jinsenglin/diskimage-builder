@@ -52,17 +52,19 @@ virt-install --connect=qemu:///system --name=centos7 --ram=512 --vcpus=1 --disk 
 
 # hack 1 :: /etc/cloud/cloud.cfg
 
-# hack 2 :: /var/lib/cloud/seed/nocloud/user-data
-cat > /var/lib/cloud/seed/nocloud/user-data <<DATA
+# hack 2 :: /var/lib/cloud/instance/cloud-config.txt
+cat > /var/lib/cloud/instance/cloud-config.txt <<DATA
 #cloud-config
 bootcmd:
  - echo 192.168.1.130 us.archive.ubuntu.com >> /etc/hosts
  - [ cloud-init-per, once, mymkfs, mkfs, /dev/vdb ]
 DATA
 
-# hack 3 :: /var/lib/cloud/seed/nocloud/meta-data
+# hack 3 :: /var/lib/cloud/seed/nocloud/user-data
 
-# hack 4 :: /usr/lib/python2.7/site-packages/cloudinit/config/cc_bootcmd.py
+# hack 4 :: /var/lib/cloud/seed/nocloud/meta-data
+
+# hack 5 :: /usr/lib/python2.7/site-packages/cloudinit/config/cc_bootcmd.py
 
 cloud-init init
 cloud-init single --name bootcmd
