@@ -43,35 +43,35 @@ disk-image-create -t raw centos7 baremetal -o centos7-baremetal # The partition 
 disk-image-create -t raw centos7 vm -o centos7-baremetal # The whole disk image command creates .raw file.
 disk-image-create -t raw centos7 vm selinux-permissive devuser cloud-init-nocloud -o centos7-baremetal
 
-# Build Option 1 - to test custom element "cclin"
+# Build Option 1 - custom element "cclin"
 # - use "/var/lib/cloud/seed/nocloud/{meta-data,user-data}" for cloud-init datasource
 export ELEMENTS_PATH=/vagrant/elements # built-in elements reside in /usr/lib/python2.7/site-packages/diskimage_builder/elements
 disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud cclin -o centos7-baremetal
 
-# Build Option 2
+# Build Option 2 - custom element "docker"
 # - use "/var/lib/cloud/seed/nocloud/{meta-data,user-data}" for cloud-init datasource
 export ELEMENTS_PATH=/vagrant/elements
 disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud docker -o centos7-baremetal
 
-# Build Option 3
+# Build Option 3 - custom element "nvidia-tesla-k80-driver"
 # - use "ConfigDrive" for cloud-init datasource
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
 export ELEMENTS_PATH=/vagrant/elements
 disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-tesla-k80-driver -o centos7-baremetal --image-size 3
 
-# Build Option 4
+# Build Option 4 - custom element "nvidia-cuda-toolkit"
 # - use "ConfigDrive" for cloud-init datasource
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
 export ELEMENTS_PATH=/vagrant/elements
 disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-cuda-toolkit -o centos7-baremetal --image-size 5
 
-# Build Option 5
+# Build Option 5 - custom element "nvidia-cudnn-library"
 # - use "ConfigDrive" for cloud-init datasource
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
 export ELEMENTS_PATH=/vagrant/elements
 disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-cudnn-library -o centos7-baremetal --image-size 5
 
-# Build Option 6
+# Build Option 6 - custom element "nvidia-docker"
 # - use "ConfigDrive" for cloud-init datasource
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
 export ELEMENTS_PATH=/vagrant/elements
