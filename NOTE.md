@@ -66,7 +66,7 @@ DATA
 
 # hack 5 :: /usr/lib/python2.7/site-packages/cloudinit/config/cc_bootcmd.py
 
-cloud-init init
+# cloud-init init
 cloud-init single --name bootcmd
 ```
 
