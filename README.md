@@ -21,8 +21,8 @@ pip install diskimage-builder
 
 # pin base image version
 #
-# wget https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud-1503.qcow2.xz
-# export DIB_CLOUD_IMAGES=$PWD/CentOS-7-x86_64-GenericCloud-1503.qcow2.xz
+# wget https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud-1801.qcow2.xz
+# export DIB_CLOUD_IMAGES=$PWD/CentOS-7-x86_64-GenericCloud-1801.qcow2.xz
 #
 
 # change disk image layout
