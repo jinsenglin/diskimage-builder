@@ -47,7 +47,9 @@ bootcmd:
  - [ cloud-init-per, once, mymkfs, mkfs, /dev/vdb ]
 DATA
 
-cloud-init init
+# hack /usr/lib/python2.7/site-packages/cloudinit/config/cc_bootcmd.py
+
+cloud-init single --name bootcmd
 ```
 
 Additional Resources
