@@ -69,6 +69,8 @@ disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devus
 
 # Build Option 5 - custom element "nvidia-cudnn-library"
 # - use "ConfigDrive" for cloud-init datasource
+# - use "DIB_NVIDIA_CUDNN_CUDA_HOME" to change cuda home if needed
+# - use "DIB_NVIDIA_CUDNN_LIBRARY" to change download url if needed
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
 export ELEMENTS_PATH=/vagrant/elements
 disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-cudnn-library -o centos7-baremetal --image-size 5
