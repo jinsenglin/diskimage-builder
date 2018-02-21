@@ -65,7 +65,7 @@ disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devus
 # - use "DIB_NVIDIA_CUDA_TOOLKIT=http://localhost:8000/cuda-repo-rhel7-9.1.85-1.x86_64.rpm" to change download url if needed
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
 export ELEMENTS_PATH=/vagrant/elements
-disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-cuda-toolkit -o centos7-baremetal --image-size 5
+disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-cuda-toolkit -o centos7-baremetal --image-size 6
 
 # Build Option 5 - custom element "nvidia-cudnn-library"
 # - use "ConfigDrive" for cloud-init datasource
@@ -73,13 +73,13 @@ disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devus
 # - use "DIB_NVIDIA_CUDNN_LIBRARY=http://localhost:8000/cudnn-9.1-linux-x64-v7.tgz" to change download url if needed
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
 export ELEMENTS_PATH=/vagrant/elements
-disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-cudnn-library -o centos7-baremetal --image-size 5
+disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-cudnn-library -o centos7-baremetal --image-size 6
 
 # Build Option 6 - custom element "nvidia-docker"
 # - use "ConfigDrive" for cloud-init datasource
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
 export ELEMENTS_PATH=/vagrant/elements
-disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-docker -o centos7-baremetal --image-size 5
+disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-docker -o centos7-baremetal --image-size 6
 
 # cache dir: /root/.cache/image-create
 # base image: http://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz
