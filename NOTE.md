@@ -57,7 +57,7 @@ cat > /var/lib/cloud/instance/cloud-config.txt <<DATA
 #cloud-config
 bootcmd:
  - echo 192.168.1.130 us.archive.ubuntu.com >> /etc/hosts
- - [ cloud-init-per, once, mymkfs, mkfs, /dev/vdb ]
+ - [ cloud-init-per, once, /bin/bash, /cloud-init-once.sh ]
 DATA
 
 # hack 3 :: /var/lib/cloud/seed/nocloud/user-data
