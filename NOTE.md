@@ -84,6 +84,10 @@ bootcmd:
 DATA
 
 # hack 3 :: /usr/lib/python2.7/site-packages/cloudinit/config/cc_bootcmd.py
+#
+# def handle(name, cfg, cloud, log, _args):
+#     log.error(cfg['bootcmd'])
+#
 
 # cloud-init init
 cloud-init single --name bootcmd
