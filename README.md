@@ -52,6 +52,13 @@ disk-image-create -t raw centos7 vm selinux-permissive devuser cloud-init-noclou
 export ELEMENTS_PATH=/vagrant/elements # built-in elements reside in /usr/lib/python2.7/site-packages/diskimage_builder/elements
 disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud cclin -o centos7-baremetal
 
+# Build Option 1 - custom element "cloud-init-patch"
+# - use "/var/lib/cloud/seed/nocloud/{meta-data,user-data}" for cloud-init datasource
+export ELEMENTS_PATH=/vagrant/elements # built-in elements reside in /usr/lib/python2.7/site-packages/diskimage_builder/elements
+export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
+export DIB_CLOUD_INIT_PATCH_BOOTCMD=1
+disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud cloud-init-patch -o centos7-baremetal
+
 # Build Option 2 - custom element "docker"
 # - use "/var/lib/cloud/seed/nocloud/{meta-data,user-data}" for cloud-init datasource
 export ELEMENTS_PATH=/vagrant/elements
