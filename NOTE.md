@@ -50,7 +50,9 @@ disk-image-create -t raw centos7 vm selinux-permissive devuser cloud-init-noclou
 # launch
 virt-install --connect=qemu:///system --name=centos7 --ram=512 --vcpus=1 --disk path=centos7-baremetal.raw,format=raw --import --network network:default --vnc
 
-# hack 1 :: /var/lib/cloud/seed/nocloud/user-data
+# hack 1 :: /etc/cloud/cloud.cfg
+
+# hack 2 :: /var/lib/cloud/seed/nocloud/user-data
 cat > /var/lib/cloud/seed/nocloud/user-data <<DATA
 #cloud-config
 bootcmd:
@@ -58,8 +60,11 @@ bootcmd:
  - [ cloud-init-per, once, mymkfs, mkfs, /dev/vdb ]
 DATA
 
-# hack 2 :: /usr/lib/python2.7/site-packages/cloudinit/config/cc_bootcmd.py
+# hack 3 :: /var/lib/cloud/seed/nocloud/meta-data
 
+# hack 4 :: /usr/lib/python2.7/site-packages/cloudinit/config/cc_bootcmd.py
+
+cloud-init init
 cloud-init single --name bootcmd
 ```
 
