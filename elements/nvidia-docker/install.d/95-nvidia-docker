@@ -8,5 +8,6 @@ set -o pipefail
 
 # install nvidia docker
 #
-# TDOO
+curl -s -L https://nvidia.github.io/nvidia-docker/centos7/x86_64/nvidia-docker.repo | tee /etc/yum.repos.d/nvidia-docker.repo
+yum -y install nvidia-docker2
 #
