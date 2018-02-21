@@ -62,6 +62,7 @@ disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devus
 
 # Build Option 4 - custom element "nvidia-cuda-toolkit"
 # - use "ConfigDrive" for cloud-init datasource
+# - use "DIB_NVIDIA_CUDA_TOOLKIT" to change download url if needed
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
 export ELEMENTS_PATH=/vagrant/elements
 disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-cuda-toolkit -o centos7-baremetal --image-size 5
