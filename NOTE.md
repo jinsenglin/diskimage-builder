@@ -50,24 +50,37 @@ disk-image-create -t raw centos7 vm selinux-permissive devuser cloud-init-noclou
 # launch
 virt-install --connect=qemu:///system --name=centos7 --ram=512 --vcpus=1 --disk path=centos7-baremetal.raw,format=raw --import --network network:default --vnc
 
-# hack 1 :: /etc/cloud/cloud.cfg
+# about /cloud-init-once.sh
+cat > /cloud-init-once.sh <<DATA
+#!/bin/bash
+date >> /tmp/cloud-init-once.log
+DATA
 
-# hack 2 :: /var/lib/cloud/instance/cloud-config.txt
-cat > /var/lib/cloud/instance/cloud-config.txt <<DATA
+# about /var/lib/cloud/seed/nocloud/user-data
+cat > /var/lib/cloud/seed/nocloud/user-data <<DATA
 #cloud-config
 bootcmd:
  - echo 192.168.1.130 us.archive.ubuntu.com >> /etc/hosts
  - [ cloud-init-per, once, my-init-once, /cloud-init-once.sh ]
 DATA
 
-# hack 3 :: /var/lib/cloud/seed/nocloud/user-data
+# hack 1 :: /etc/cloud/cloud.cfg
 
-# hack 4 :: /var/lib/cloud/seed/nocloud/meta-data
+# hack 2 :: /var/lib/cloud/instance/cloud-config.txt
+cat > /var/lib/cloud/instance/cloud-config.txt <<DATA
+#cloud-config
+bootcmd:
+ - echo 192.168.1.133 us.archive.ubuntu.com >> /etc/hosts
+ - [ cloud-init-per, always, my-init-once, /cloud-init-once.sh ]
+DATA
 
-# hack 5 :: /usr/lib/python2.7/site-packages/cloudinit/config/cc_bootcmd.py
+# hack 3 :: /usr/lib/python2.7/site-packages/cloudinit/config/cc_bootcmd.py
 
 # cloud-init init
 cloud-init single --name bootcmd
+
+cat /etc/hosts
+cat /tmp/cloud-init-once.log
 ```
 
 Additional Resources
