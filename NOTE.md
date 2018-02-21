@@ -69,9 +69,18 @@ DATA
 # hack 2 :: /var/lib/cloud/instance/cloud-config.txt
 cat > /var/lib/cloud/instance/cloud-config.txt <<DATA
 #cloud-config
+
+# from 1 files
+# part-001
+
+---
 bootcmd:
- - echo 192.168.1.133 us.archive.ubuntu.com >> /etc/hosts
- - [ cloud-init-per, always, my-init-once, /cloud-init-once.sh ]
+- echo 192.168.1.133 us.archive.ubuntu.com >> /etc/hosts
+-   - cloud-init-per
+    - always
+    - my-init-once
+    - /cloud-init-once.sh
+...
 DATA
 
 # hack 3 :: /usr/lib/python2.7/site-packages/cloudinit/config/cc_bootcmd.py
