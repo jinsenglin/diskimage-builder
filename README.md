@@ -55,6 +55,7 @@ disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devus
 
 # Build Option 3 - custom element "nvidia-tesla-k80-driver"
 # - use "ConfigDrive" for cloud-init datasource
+# - use "DIB_NVIDIA_K80_DRIVER" to change download url if needed
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
 export ELEMENTS_PATH=/vagrant/elements
 disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-tesla-k80-driver -o centos7-baremetal --image-size 3
