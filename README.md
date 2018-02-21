@@ -38,9 +38,11 @@ export DIB_DEV_USER_PWDLESS_SUDO="yes"
 export DIB_DEV_USER_USERNAME="cclin"
 export DIB_DEV_USER_PASSWORD="cclin"
 
-# Build Option 0
+# Build Option 0 :: vm vs. baremetal
 disk-image-create -t raw centos7 baremetal -o centos7-baremetal # The partition image command creates .raw, .vmlinuz and .initrd files.
 disk-image-create -t raw centos7 vm -o centos7-baremetal # The whole disk image command creates .raw file.
+
+# Build Option 0 :: cloud-init
 disk-image-create -t raw centos7 vm selinux-permissive devuser cloud-init-nocloud -o centos7-baremetal
 
 # Build Option 1 - custom element "cclin"
