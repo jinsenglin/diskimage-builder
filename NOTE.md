@@ -42,10 +42,15 @@ Source: https://cloudinit.readthedocs.io/en/latest/topics/capabilities.html#clou
 develop cloud-init
 
 ```
+# build
+# - tty0
+# - unset ConfigDrive
 disk-image-create -t raw centos7 vm selinux-permissive devuser cloud-init-nocloud -o centos7-baremetal
 
+# launch
 virt-install --connect=qemu:///system --name=centos7 --ram=512 --vcpus=1 --disk path=centos7-baremetal.raw,format=raw --import --network network:default --vnc
 
+# hack 1 :: /var/lib/cloud/seed/nocloud/user-data
 cat > /var/lib/cloud/seed/nocloud/user-data <<DATA
 #cloud-config
 bootcmd:
@@ -53,7 +58,7 @@ bootcmd:
  - [ cloud-init-per, once, mymkfs, mkfs, /dev/vdb ]
 DATA
 
-# hack /usr/lib/python2.7/site-packages/cloudinit/config/cc_bootcmd.py
+# hack 2 :: /usr/lib/python2.7/site-packages/cloudinit/config/cc_bootcmd.py
 
 cloud-init single --name bootcmd
 ```
