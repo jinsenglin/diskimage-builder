@@ -33,6 +33,12 @@ Additional Resources
 
 ---
 
+Each module is gated to run only once due to semaphores in `/var/lib/cloud/`.
+
+Source: https://cloudinit.readthedocs.io/en/latest/topics/capabilities.html#cloud-init-modules
+
+---
+
 develop cloud-init
 
 ```
@@ -55,6 +61,5 @@ cloud-init single --name bootcmd
 Additional Resources
 
 * https://cloudinit.readthedocs.io/en/latest/topics/capabilities.html#cli-interface
-* https://cloudinit.readthedocs.io/en/latest/topics/capabilities.html#cloud-init-modules
 * https://cloudinit.readthedocs.io/en/latest/topics/modules.html#bootcmd
 * https://cloudinit.readthedocs.io/en/latest/topics/examples.html#run-commands-on-first-boot
