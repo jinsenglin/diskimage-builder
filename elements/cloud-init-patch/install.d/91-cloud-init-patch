@@ -8,7 +8,13 @@ set -o pipefail
 
 # patch cloud-init
 #
-patch -F 0 -f /usr/lib/python2.7/site-packages/cloudinit/config/cc_set_passwords.py < $(dirname $0)/cc_set_passwords.py.patch
+if [ ${DIB_CLOUD_INIT_PATCH_SET_PASSWORDS:-0} -gt 0 ]; then
+    patch -F 0 -f /usr/lib/python2.7/site-packages/cloudinit/config/cc_set_passwords.py < $(dirname $0)/cc_set_passwords.py.patch
+fi
+
+if [ ${DIB_CLOUD_INIT_PATCH_BOOTCMD:-0} -gt 0 ]; then
+    patch -F 0 -f /usr/lib/python2.7/site-packages/cloudinit/config/cc_bootcmd.py < $(dirname $0)/cc_bootcmd.py.patch
+fi
 #
-# NOTE: this patch file is created by `diff -Naur cc_set_passwords.py cc_set_passwords_rev.py > cc_set_passwords.py.patch`.
-# NOTE: this patch file is only applied when cc_set_passwords.py is not changed.
+# NOTE: this patch file is created by e.g. `diff -Naur cc_set_passwords.py cc_set_passwords_rev.py > cc_set_passwords.py.patch`.
+# NOTE: this patch file is only applied when source file e.g. cc_set_passwords.py is not changed.
