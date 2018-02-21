@@ -55,5 +55,6 @@ cloud-init single --name bootcmd
 Additional Resources
 
 * https://cloudinit.readthedocs.io/en/latest/topics/capabilities.html#cli-interface
+* https://cloudinit.readthedocs.io/en/latest/topics/capabilities.html#cloud-init-modules
 * https://cloudinit.readthedocs.io/en/latest/topics/modules.html#bootcmd
 * https://cloudinit.readthedocs.io/en/latest/topics/examples.html#run-commands-on-first-boot
