@@ -55,14 +55,14 @@ disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devus
 
 # Build Option 3 - custom element "nvidia-tesla-k80-driver"
 # - use "ConfigDrive" for cloud-init datasource
-# - use "DIB_NVIDIA_K80_DRIVER" to change download url if needed
+# - use "DIB_NVIDIA_K80_DRIVER=http://localhost:8000/nvidia-diag-driver-local-repo-rhel7-390.12-1.0-1.x86_64.rpm" to change download url if needed
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
 export ELEMENTS_PATH=/vagrant/elements
 disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-tesla-k80-driver -o centos7-baremetal --image-size 3
 
 # Build Option 4 - custom element "nvidia-cuda-toolkit"
 # - use "ConfigDrive" for cloud-init datasource
-# - use "DIB_NVIDIA_CUDA_TOOLKIT" to change download url if needed
+# - use "DIB_NVIDIA_CUDA_TOOLKIT=http://localhost:8000/cuda-repo-rhel7-9.1.85-1.x86_64.rpm" to change download url if needed
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
 export ELEMENTS_PATH=/vagrant/elements
 disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-cuda-toolkit -o centos7-baremetal --image-size 5
@@ -70,7 +70,7 @@ disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devus
 # Build Option 5 - custom element "nvidia-cudnn-library"
 # - use "ConfigDrive" for cloud-init datasource
 # - use "DIB_NVIDIA_CUDNN_CUDA_HOME" to change cuda home if needed
-# - use "DIB_NVIDIA_CUDNN_LIBRARY" to change download url if needed
+# - use "DIB_NVIDIA_CUDNN_LIBRARY=http://localhost:8000/cudnn-9.1-linux-x64-v7.tgz" to change download url if needed
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
 export ELEMENTS_PATH=/vagrant/elements
 disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-cudnn-library -o centos7-baremetal --image-size 5
