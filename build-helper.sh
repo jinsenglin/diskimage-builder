@@ -5,7 +5,7 @@ set -o pipefail
 
 function show_env() {
     echo tty
-    grep tty /usr/lib/python2.7/site-packages/diskimage_builder/elements/bootloader/finalise.d/50-bootloader
+    grep --color tty /usr/lib/python2.7/site-packages/diskimage_builder/elements/bootloader/finalise.d/50-bootloader
     echo
 }
 
