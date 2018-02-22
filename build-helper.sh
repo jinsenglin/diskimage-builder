@@ -3,6 +3,8 @@
 set -e
 set -o pipefail
 
+fn_array=(show-env build-bm_c7_k80)
+
 function show_env() {
     echo tty
     grep --color tty /usr/lib/python2.7/site-packages/diskimage_builder/elements/bootloader/finalise.d/50-bootloader
@@ -40,6 +42,8 @@ function show_env() {
 }
 
 if [ $# -eq 1 ]; then
-  fn=$(echo $1 | sed 's/-/_/g')
-  $fn
+    fn=$(echo $1 | sed 's/-/_/g')
+    $fn
+else
+    echo "available subcommnd: ${fn_array[@]}"
 fi 
