@@ -41,6 +41,16 @@ function show_env() {
     echo
 }
 
+function build_bm_c7-k80() {
+    bash hack-upstream-elements/switch-to-tty1.sh
+
+    export DIB_CLOUD_INIT_DATASOURCES=ConfigDrive
+    export ELEMENTS_PATH=$PWD/elements
+    export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
+
+    disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-tesla-k80-driver -o centos7-baremetal --image-size 3
+}
+
 if [ $# -eq 1 ]; then
     fn=$(echo $1 | sed 's/-/_/g')
     $fn
