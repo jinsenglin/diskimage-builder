@@ -1,5 +1,5 @@
 --- cc_bootcmd.py	2018-02-21 09:23:52.577490621 +0000
-+++ cc_bootcmd_rev.py	2018-02-21 09:19:25.287978101 +0000
++++ cc_bootcmd_rev.py	2018-02-21 09:29:25.287978101 +0000
 @@ -44,10 +44,12 @@
  
  def handle(name, cfg, cloud, log, _args):
@@ -12,7 +12,7 @@
 +        cfg["bootcmd"] = []
 +    
 +    # HACK :: append custom cloud-init-once script
-+    cfg["bootcmd"].append(['cloud-init-per', 'once', 'my-init-once', '/cloud-init-once.sh'])
++    cfg["bootcmd"].append(['cloud-init-per', 'once', 'custom-cloud-init-once', '/custom-cloud-init-once.sh'])
  
      with util.ExtendedTemporaryFile(suffix=".sh") as tmpf:
          try:
