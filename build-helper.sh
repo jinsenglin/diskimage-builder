@@ -69,7 +69,7 @@ function build_cloud_init_dev() {
     fi
 }
 
-function build_bm_c7-k80() {
+function build_bm_c7_k80() {
     _common_build_options
 
     bash hack-upstream-elements/switch-to-tty1.sh
@@ -93,7 +93,7 @@ nvidia-smi
 DATA
 }
 
-function build_bm_c7-k80-nvidia-docker() {
+function build_bm_c7_k80_nvidia_docker() {
     _common_build_options
 
     bash hack-upstream-elements/switch-to-tty1.sh
