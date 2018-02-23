@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# dummy
+echo "$(date) | 52 " >> /tmp/custom-cloud-init-once.log

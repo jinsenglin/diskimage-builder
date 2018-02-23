@@ -101,6 +101,7 @@ function build_bm_c7-k80-nvidia-docker() {
     export DIB_CLOUD_INIT_DATASOURCES=ConfigDrive
     export ELEMENTS_PATH=$PWD/elements
     export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
+    export DIB_CLOUD_INIT_PATCH_BOOTCMD=1
 
     show_env
 
