@@ -1,4 +1,14 @@
 #!/bin/bash
 
-#dummy
-date >> /tmp/custom-cloud-init-once.log
+# start
+echo "$(date) | Start." >> /tmp/custom-cloud-init-once.log
+
+# run
+for custom_init in $(ls /usr/local/bin/??-custom-cloud-init-once)
+do
+    echo "$(date) | $custom_init" >> /tmp/custom-cloud-init-once.log
+    $custom_init
+done
+
+# end
+echo "$(date) | End." >> /tmp/custom-cloud-init-once.log
