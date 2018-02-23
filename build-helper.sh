@@ -3,7 +3,7 @@
 set -e
 set -o pipefail
 
-fn_array=(show-env build-bm_c7_k80 build-bm_c7_k80_nvidia_docker)
+fn_array=(show-env build-cloud_init_dev build-bm_c7_k80 build-bm_c7_k80_nvidia_docker)
 
 function show_env() {
     echo tty
@@ -41,14 +41,51 @@ function show_env() {
     echo
 }
 
+function _common_build_options() {
+    export DIB_OFFLINE=1
+    export OVERWRITE_OLD_IMAGE=1
+    export DIB_DEV_USER_PWDLESS_SUDO="yes"
+    export DIB_DEV_USER_USERNAME="cclin"
+    export DIB_DEV_USER_PASSWORD="cclin"
+}
+
+function build_cloud_init_dev() {
+    _common_build_options
+
+    bash hack-upstream-elements/switch-to-tty0.sh
+
+    unset DIB_CLOUD_INIT_DATASOURCES
+    export ELEMENTS_PATH=$PWD/elements
+    export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
+    export DIB_CLOUD_INIT_PATCH_BOOTCMD=1
+
+    show_env
+
+    echo -n "Build ? (default: y) [y/n] "
+    read ans
+
+    if [ ${ans:-n} == "y" ]; then
+        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud cloud-init-patch -o centos7-baremetal
+    fi
+}
+
 function build_bm_c7-k80() {
+    _common_build_options
+
     bash hack-upstream-elements/switch-to-tty1.sh
 
     export DIB_CLOUD_INIT_DATASOURCES=ConfigDrive
     export ELEMENTS_PATH=$PWD/elements
     export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
 
-    disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-tesla-k80-driver -o centos7-baremetal --image-size 3
+    show_env
+
+    echo -n "Build ? (default: y) [y/n] "
+    read ans
+
+    if [ ${ans:-n} == "y" ]; then
+        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-tesla-k80-driver -o centos7-baremetal --image-size 3
+    fi
 
     cat <<DATA
 # verify
@@ -57,13 +94,22 @@ DATA
 }
 
 function build_bm_c7-k80-nvidia-docker() {
+    _common_build_options
+
     bash hack-upstream-elements/switch-to-tty1.sh
 
     export DIB_CLOUD_INIT_DATASOURCES=ConfigDrive
     export ELEMENTS_PATH=$PWD/elements
     export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
 
-    disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-docker -o centos7-baremetal --image-size 6
+    show_env
+
+    echo -n "Build ? (default: y) [y/n] "
+    read ans
+
+    if [ ${ans:-n} == "y" ]; then
+        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-docker -o centos7-baremetal --image-size 6
+    fi
 
     cat <<DATA
 # post-install
