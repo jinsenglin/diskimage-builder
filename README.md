@@ -229,6 +229,13 @@ bg
 # destroy cirros
 # exit
 # virsh -c qemu:///system undefine cirros # will remove /etc/libvirt/qemu/cirros.xml too
+
+REF https://github.com/jedi4ever/veewee/issues/996
+
+Changing /etc/libvirt/qemu.conf to make things work.
+Uncomment user/group to work as root (or another user/group e.g. vagrant).
+
+Then restart libvirtd.
 ```
 
 ```
