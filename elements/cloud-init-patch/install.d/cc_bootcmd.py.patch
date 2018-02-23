@@ -12,7 +12,7 @@
 +        cfg["bootcmd"] = []
 +    
 +    # HACK :: append custom cloud-init-once script
-+    cfg["bootcmd"].append(['cloud-init-per', 'once', 'custom-cloud-init-once', '/custom-cloud-init-once.sh'])
++    cfg["bootcmd"].append(['cloud-init-per', 'once', 'custom-cloud-init-once', 'custom-cloud-init-once'])
  
      with util.ExtendedTemporaryFile(suffix=".sh") as tmpf:
          try:
