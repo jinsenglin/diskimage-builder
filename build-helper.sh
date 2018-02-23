@@ -39,6 +39,18 @@ function show_env() {
 
     echo DIB_CLOUD_INIT_DATASOURCES=$DIB_CLOUD_INIT_DATASOURCES
     echo
+
+    echo DIB_NVIDIA_K80_DRIVER=$DIB_NVIDIA_K80_DRIVER
+    echo
+
+    echo DIB_NVIDIA_CUDA_TOOLKIT=$DIB_NVIDIA_CUDA_TOOLKIT
+    echo
+
+    echo DIB_NVIDIA_CUDNN_CUDA_HOME=$DIB_NVIDIA_CUDNN_CUDA_HOME
+    echo
+
+    echo DIB_NVIDIA_CUDNN_LIBRARY=$DIB_NVIDIA_CUDNN_LIBRARY
+    echo
 }
 
 function _common_build_options() {
@@ -102,6 +114,9 @@ function build_bm_c7_k80_nvidia_docker() {
     export ELEMENTS_PATH=$PWD/elements
     export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
     export DIB_CLOUD_INIT_PATCH_BOOTCMD=1
+    export DIB_NVIDIA_K80_DRIVER=http://localhost:8000/nvidia-diag-driver-local-repo-rhel7-390.12-1.0-1.x86_64.rpm
+    export DIB_NVIDIA_CUDA_TOOLKIT=http://localhost:8000/cuda-repo-rhel7-9-1-local-9.1.85-1.x86_64.rpm
+    export DIB_NVIDIA_CUDNN_LIBRARY=http://localhost:8000/cudnn-9.1-linux-x64-v7.tgz
 
     show_env
 
