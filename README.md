@@ -232,6 +232,10 @@ bg
 
 REF https://github.com/jedi4ever/veewee/issues/996
 
+About `chown qemu:qemu centos7-baremetal.raw`
+
+There is another solution for this issue.
+
 Changing /etc/libvirt/qemu.conf to make things work.
 Uncomment user/group to work as root (or another user/group e.g. vagrant).
 
