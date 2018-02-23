@@ -76,7 +76,7 @@ function build_cloud_init_dev() {
     echo -n "Build ? (default: y) [y/n] "
     read ans
 
-    if [ ${ans:-n} == "y" ]; then
+    if [ ${ans:-y} == "y" ]; then
         disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud cloud-init-patch -o centos7-baremetal
     fi
 }
@@ -95,14 +95,13 @@ function build_bm_c7_k80() {
     echo -n "Build ? (default: y) [y/n] "
     read ans
 
-    if [ ${ans:-n} == "y" ]; then
+    if [ ${ans:-y} == "y" ]; then
         disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-tesla-k80-driver -o centos7-baremetal --image-size 3
-    fi
-
-    cat <<DATA
+        cat <<DATA
 # verify
 nvidia-smi
 DATA
+    fi
 }
 
 function build_bm_c7_k80_nvidia_docker() {
@@ -123,30 +122,14 @@ function build_bm_c7_k80_nvidia_docker() {
     echo -n "Build ? (default: y) [y/n] "
     read ans
 
-    if [ ${ans:-n} == "y" ]; then
+    if [ ${ans:-y} == "y" ]; then
         disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-docker -o centos7-baremetal --image-size 6
-    fi
-
-    cat <<DATA
-# post-install
-cd /
-rpm -i cuda-repo-rhel7-9-1-local-9.1.85-1.x86_64.rpm
-yum clean all
-yum -y install cuda
-
-cd /
-tar -zxf cudnn-9.1-linux-x64-v7.tgz
-cp cuda/include/cudnn.h /usr/local/cuda-9.1/include/
-cp cuda/lib64/libcudnn* /usr/local/cuda-9.1/lib64/
-chmod a+r /usr/local/cuda-9.1/include/cudnn.h
-chmod a+r /usr/local/cuda-9.1/lib64/libcudnn*
-ln -sf /usr/local/cuda-9.1 /usr/local/cuda
-
-systemctl start docker
-
+        cat <<DATA
 # verify
+systemctl start docker
 docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
 DATA
+    fi
 }
 
 
