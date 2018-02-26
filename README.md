@@ -22,8 +22,9 @@ pip install diskimage-builder
 # pin base image version
 #
 # wget https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud-1801-01.qcow2.xz
+# ln -sf CentOS-7-x86_64-GenericCloud-1801-01.qcow2.xz CentOS-7-x86_64-GenericCloud.qcow2.xz
 # python -m SimpleHTTPServer
-# export DIB_CLOUD_IMAGES=http://localhost:8000/CentOS-7-x86_64-GenericCloud-1801-01.qcow2.xz
+# export DIB_CLOUD_IMAGES=http://localhost:8000/
 #
 # note - with cloud-init v0.7.9 inside (src download https://launchpad.net/cloud-init/trunk/0.7.9/+download/cloud-init-0.7.9.tar.gz)
 #
