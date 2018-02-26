@@ -10,6 +10,9 @@ function show_env() {
     grep --color tty /usr/lib/python2.7/site-packages/diskimage_builder/elements/bootloader/finalise.d/50-bootloader
     echo
 
+    echo DIB_BOOTLOADER_DEFAULT_CMDLINE=$DIB_BOOTLOADER_DEFAULT_CMDLINE
+    echo
+
     echo DIB_DEBUG_TRACE=$DIB_DEBUG_TRACE
     echo
 
@@ -67,7 +70,8 @@ function _common_build_options() {
 function build_cloud_init_dev() {
     _common_build_options
 
-    bash hack-upstream-elements/switch-to-tty0.sh
+    #bash hack-upstream-elements/switch-to-tty0.sh
+    unset DIB_BOOTLOADER_DEFAULT_CMDLINE
 
     unset DIB_CLOUD_INIT_DATASOURCES
     export ELEMENTS_PATH=$PWD/elements
@@ -88,7 +92,8 @@ function build_cloud_init_dev() {
 function build_license_dev() {
     _common_build_options
 
-    bash hack-upstream-elements/switch-to-tty0.sh
+    #bash hack-upstream-elements/switch-to-tty0.sh
+    unset DIB_BOOTLOADER_DEFAULT_CMDLINE
 
     unset DIB_CLOUD_INIT_DATASOURCES
     export ELEMENTS_PATH=$PWD/elements
@@ -109,7 +114,8 @@ function build_license_dev() {
 function build_bm_c7_k80() {
     _common_build_options
 
-    bash hack-upstream-elements/switch-to-tty1.sh
+    #bash hack-upstream-elements/switch-to-tty1.sh
+    DIB_BOOTLOADER_DEFAULT_CMDLINE="console=tty1 console=ttyS1,115200 crashkernel=auto"
 
     export DIB_CLOUD_INIT_DATASOURCES=ConfigDrive
     export ELEMENTS_PATH=$PWD/elements
@@ -132,7 +138,8 @@ DATA
 function build_bm_c7_k80_nvidia_docker() {
     _common_build_options
 
-    bash hack-upstream-elements/switch-to-tty1.sh
+    #bash hack-upstream-elements/switch-to-tty1.sh
+    DIB_BOOTLOADER_DEFAULT_CMDLINE="console=tty1 console=ttyS1,115200 crashkernel=auto"
 
     export DIB_CLOUD_INIT_DATASOURCES=ConfigDrive
     export ELEMENTS_PATH=$PWD/elements
