@@ -1,0 +1,19 @@
+--- cc_runcmd.py	2018-02-26 10:09:58.000000000 +0800
++++ cc_runcmd_rev.py	2018-02-26 10:12:25.000000000 +0800
+@@ -44,10 +44,13 @@
+ 
+ 
+ def handle(name, cfg, cloud, log, _args):
++
++    # HACK :: initialize cfg["runcmd"]
+     if "runcmd" not in cfg:
+-        log.debug(("Skipping module named %s,"
+-                   " no 'runcmd' key in configuration"), name)
+-        return
++        cfg["runcmd"] = []
++
++    # HACK :: append custom cloud-init-once script
++    cfg["runcmd"].append(['cloud-init-per', 'once', 'custom-cloud-init-once', 'custom-cloud-init-once'])
+ 
+     out_fn = os.path.join(cloud.get_ipath('scripts'), "runcmd")
+     cmd = cfg["runcmd"]
