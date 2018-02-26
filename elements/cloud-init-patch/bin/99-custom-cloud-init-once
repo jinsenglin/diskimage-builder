@@ -1,4 +1,6 @@
 #!/bin/bash
 
+LOG=/var/log/custom-cloud-init-once/custom-cloud-init-once.log
+
 # dummy
-echo "$(date) | 99 " >> /tmp/custom-cloud-init-once.log
+echo "$(date) | 99 " >> $LOG

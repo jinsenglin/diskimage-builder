@@ -1,14 +1,19 @@
 #!/bin/bash
 
+LOG_HOME=/var/log/custom-cloud-init-once
+[ -d $LOG_HOME ] && mkdir $LOG_HOME
+
+LOG=$LOG_HOME/custom-cloud-init-once.log
+
 # start
-echo "$(date) | Start." >> /tmp/custom-cloud-init-once.log
+echo "$(date) | Start." > $LOG
 
 # run
 for custom_init in $(ls /usr/local/bin/??-custom-cloud-init-once)
 do
-    echo "$(date) | $custom_init" >> /tmp/custom-cloud-init-once.log
+    echo "$(date) | $custom_init" >> $LOG
     $custom_init
 done
 
 # end
-echo "$(date) | End." >> /tmp/custom-cloud-init-once.log
+echo "$(date) | End." >> $LOG
