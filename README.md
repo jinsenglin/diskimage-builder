@@ -56,7 +56,8 @@ disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devus
 # - use "/var/lib/cloud/seed/nocloud/{meta-data,user-data}" for cloud-init datasource
 export ELEMENTS_PATH=/vagrant/elements # built-in elements reside in /usr/lib/python2.7/site-packages/diskimage_builder/elements
 export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
-export DIB_CLOUD_INIT_PATCH_BOOTCMD=1
+export DIB_CLOUD_INIT_PATCH_BOOTCMD=0
+export DIB_CLOUD_INIT_PATCH_RUNCMD=1
 disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud cloud-init-patch -o centos7-baremetal
 
 # Build Option 2 - custom element "docker"
@@ -79,7 +80,7 @@ disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devus
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
 export ELEMENTS_PATH=/vagrant/elements
 export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
-export DIB_CLOUD_INIT_PATCH_BOOTCMD=1
+export DIB_CLOUD_INIT_PATCH_RUNCMD=1
 disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-cuda-toolkit -o centos7-baremetal --image-size 6
 
 # Build Option 5 - custom element "nvidia-cudnn-library"
@@ -89,7 +90,7 @@ disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devus
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
 export ELEMENTS_PATH=/vagrant/elements
 export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
-export DIB_CLOUD_INIT_PATCH_BOOTCMD=1
+export DIB_CLOUD_INIT_PATCH_RUNCMD=1
 disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-cudnn-library -o centos7-baremetal --image-size 6
 
 # Build Option 6 - custom element "nvidia-docker"
@@ -97,7 +98,7 @@ disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devus
 export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive"
 export ELEMENTS_PATH=/vagrant/elements
 export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
-export DIB_CLOUD_INIT_PATCH_BOOTCMD=1
+export DIB_CLOUD_INIT_PATCH_RUNCMD=1
 disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-docker -o centos7-baremetal --image-size 6
 
 # cache dir: /root/.cache/image-create

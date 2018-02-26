@@ -116,7 +116,8 @@ function build_bm_c7_k80_nvidia_docker() {
     export DIB_CLOUD_INIT_DATASOURCES=ConfigDrive
     export ELEMENTS_PATH=$PWD/elements
     export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
-    export DIB_CLOUD_INIT_PATCH_BOOTCMD=1
+    export DIB_CLOUD_INIT_PATCH_BOOTCMD=0
+    export DIB_CLOUD_INIT_PATCH_RUNCMD=1
     export DIB_NVIDIA_K80_DRIVER=http://localhost:8000/nvidia-diag-driver-local-repo-rhel7-390.12-1.0-1.x86_64.rpm
     export DIB_NVIDIA_CUDA_TOOLKIT=http://localhost:8000/cuda-repo-rhel7-9-1-local-9.1.85-1.x86_64.rpm
     export DIB_NVIDIA_CUDNN_LIBRARY=http://localhost:8000/cudnn-9.1-linux-x64-v7.tgz
