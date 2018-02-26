@@ -1,3 +1,4 @@
+.vagrant/
 centos7-baremetal.d/
 centos7-baremetal.raw
 centos7-baremetal.raw-new
