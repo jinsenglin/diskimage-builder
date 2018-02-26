@@ -86,11 +86,11 @@ DATA
 # hack 3 :: /usr/lib/python2.7/site-packages/cloudinit/config/cc_bootcmd.py
 #
 # def handle(name, cfg, cloud, log, _args):
-#     log.error(cfg['bootcmd'])
+#     log.debug(cfg['bootcmd'])
 #
 
 # cloud-init init
-cloud-init single --name bootcmd
+cloud-init --debug single --name bootcmd --frequency always
 #
 # Cloud-init v. 0.7.9 running 'single' at Wed, 21 Feb 2018 07:52:51 +0000. Up 796.07 seconds.
 # 2018-02-21 07:52:52,661 - cc_bootcmd.py[ERROR]: ['echo 192.168.1.133 us.archive.ubuntu.com >> /etc/hosts', ['cloud-init-per', 'always', 'my-init-once', '/cloud-init-once.sh']]
