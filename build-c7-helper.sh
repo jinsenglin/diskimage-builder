@@ -3,7 +3,7 @@
 set -e
 set -o pipefail
 
-fn_array=(show-env build-cloud_init_dev build-license_dev build-bm_c7_k80 build-bm_c7_k80_nvidia_docker)
+fn_array=(show-env build-cloud_init_dev build-license_dev build-bm_c7 build-bm_c7_k80 build-bm_c7_k80_nvidia_docker)
 
 function show_env() {
     echo tty
@@ -111,6 +111,28 @@ function build_license_dev() {
     fi
 }
 
+function build_bm_c7() {
+    _common_build_options
+
+    #bash hack-upstream-elements/switch-to-tty1.sh
+    DIB_BOOTLOADER_DEFAULT_CMDLINE="console=tty1 console=ttyS1,115200 crashkernel=auto"
+
+    export DIB_CLOUD_INIT_DATASOURCES=ConfigDrive
+    export ELEMENTS_PATH=$PWD/elements
+    export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
+    export DIB_CLOUD_INIT_PATCH_BOOTCMD=0
+    export DIB_CLOUD_INIT_PATCH_RUNCMD=0
+
+    show_env
+
+    echo -n "Build ? (default: y) [y/n] "
+    read ans
+
+    if [ ${ans:-y} == "y" ]; then
+        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-tesla-k80-driver -o centos7-baremetal
+    fi
+}
+
 function build_bm_c7_k80() {
     _common_build_options
 
@@ -120,6 +142,8 @@ function build_bm_c7_k80() {
     export DIB_CLOUD_INIT_DATASOURCES=ConfigDrive
     export ELEMENTS_PATH=$PWD/elements
     export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
+    export DIB_CLOUD_INIT_PATCH_BOOTCMD=0
+    export DIB_CLOUD_INIT_PATCH_RUNCMD=0
 
     show_env
 
