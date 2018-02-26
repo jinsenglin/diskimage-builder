@@ -72,7 +72,8 @@ function build_cloud_init_dev() {
     unset DIB_CLOUD_INIT_DATASOURCES
     export ELEMENTS_PATH=$PWD/elements
     export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
-    export DIB_CLOUD_INIT_PATCH_BOOTCMD=1
+    export DIB_CLOUD_INIT_PATCH_BOOTCMD=0
+    export DIB_CLOUD_INIT_PATCH_RUNCMD=1
 
     show_env
 
