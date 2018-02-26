@@ -3,7 +3,7 @@
 set -e
 set -o pipefail
 
-fn_array=(show-env build-cloud_init_dev build-bm_c7_k80 build-bm_c7_k80_nvidia_docker)
+fn_array=(show-env build-cloud_init_dev build-license_dev build-bm_c7_k80 build-bm_c7_k80_nvidia_docker)
 
 function show_env() {
     echo tty
@@ -82,6 +82,27 @@ function build_cloud_init_dev() {
 
     if [ ${ans:-y} == "y" ]; then
         disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud cloud-init-patch -o centos7-baremetal
+    fi
+}
+
+function build_license_dev() {
+    _common_build_options
+
+    bash hack-upstream-elements/switch-to-tty0.sh
+
+    unset DIB_CLOUD_INIT_DATASOURCES
+    export ELEMENTS_PATH=$PWD/elements
+    export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
+    export DIB_CLOUD_INIT_PATCH_BOOTCMD=0
+    export DIB_CLOUD_INIT_PATCH_RUNCMD=1
+
+    show_env
+
+    echo -n "Build ? (default: y) [y/n] "
+    read ans
+
+    if [ ${ans:-y} == "y" ]; then
+        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud cloud-init-patch license -o centos7-baremetal
     fi
 }
 
