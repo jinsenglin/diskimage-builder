@@ -3,7 +3,7 @@
 set -e
 set -o pipefail
 
-fn_array=(show-env build-cloud_init_dev build-license_dev build-bm_c7 build-bm_c7_k80 build-bm_c7_k80_nvidia_docker)
+fn_array=(show-env build-cloud_init_dev build-license_dev build-vm_c7 build-bm_c7 build-bm_c7_k80 build-bm_c7_k80_nvidia_docker)
 
 function show_env() {
     echo tty
@@ -111,6 +111,27 @@ function build_license_dev() {
     fi
 }
 
+function build_vm_c7() {
+    _common_build_options
+
+    unset DIB_BOOTLOADER_DEFAULT_CMDLINE
+
+    export DIB_CLOUD_INIT_DATASOURCES=ConfigDrive
+    export ELEMENTS_PATH=$PWD/elements
+    export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
+    export DIB_CLOUD_INIT_PATCH_BOOTCMD=0
+    export DIB_CLOUD_INIT_PATCH_RUNCMD=1
+
+    show_env
+
+    echo -n "Build ? (default: y) [y/n] "
+    read ans
+
+    if [ ${ans:-y} == "y" ]; then
+        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch -o vm-c7
+    fi
+}
+
 function build_bm_c7() {
     _common_build_options
 
@@ -121,7 +142,7 @@ function build_bm_c7() {
     export ELEMENTS_PATH=$PWD/elements
     export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
     export DIB_CLOUD_INIT_PATCH_BOOTCMD=0
-    export DIB_CLOUD_INIT_PATCH_RUNCMD=0
+    export DIB_CLOUD_INIT_PATCH_RUNCMD=1
 
     show_env
 
@@ -129,7 +150,7 @@ function build_bm_c7() {
     read ans
 
     if [ ${ans:-y} == "y" ]; then
-        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-tesla-k80-driver -o centos7-baremetal
+        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch -o centos7-baremetal
     fi
 }
 
