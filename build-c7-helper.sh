@@ -85,7 +85,7 @@ function build_cloud_init_dev() {
     read ans
 
     if [ ${ans:-y} == "y" ]; then
-        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud cloud-init-patch -o centos7-baremetal
+        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud cloud-init-patch -o cloud-init-dev
     fi
 }
 
@@ -106,7 +106,7 @@ function build_license_dev() {
     read ans
 
     if [ ${ans:-y} == "y" ]; then
-        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud cloud-init-patch license -o centos7-baremetal
+        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud cloud-init-patch license -o license-dev
     fi
 }
 
@@ -147,7 +147,7 @@ function build_bm_c7() {
     read ans
 
     if [ ${ans:-y} == "y" ]; then
-        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch -o centos7-baremetal
+        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch -o bm-c7
     fi
 }
 
@@ -168,7 +168,7 @@ function build_bm_c7_k80() {
     read ans
 
     if [ ${ans:-y} == "y" ]; then
-        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-tesla-k80-driver -o centos7-baremetal --image-size 3
+        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-tesla-k80-driver -o bm-c7-k80 --image-size 3
         cat <<DATA
 # verify
 nvidia-smi
@@ -196,7 +196,7 @@ function build_bm_c7_k80_nvidia_docker() {
     read ans
 
     if [ ${ans:-y} == "y" ]; then
-        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-docker -o centos7-baremetal --image-size 6
+        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch nvidia-docker -o bm-c7-k80-cuda-cudnn-nvidia_docker --image-size 6
         cat <<DATA
 # verify
 systemctl start docker
