@@ -9,9 +9,9 @@ set -o pipefail
 # install license
 #
 
-wget ${DIB_LICENSE_CLIENT_CERT:-http://192.168.240.56.xip.io/client.cert.pem} -O /etc/pki/client.cert.pem
-wget ${DIB_LICENSE_CLIENT_KEY:-http://192.168.240.56.xip.io/client.key.pem} -O /etc/pki/client.key.pem
-wget ${DIB_LICENSE_VAULT:-http://192.168.240.56.xip.io/src.des3} -O /opt/src.des3
+curl -o /etc/pki/client.cert.pem ${DIB_LICENSE_CLIENT_CERT:-http://192.168.240.56.xip.io/client.cert.pem}
+curl -o /etc/pki/client.key.pem ${DIB_LICENSE_CLIENT_KEY:-http://192.168.240.56.xip.io/client.key.pem}
+curl -o /opt/src.des3 ${DIB_LICENSE_VAULT:-http://192.168.240.56.xip.io/src.des3}
 
 cat >> /usr/local/bin/11-custom-cloud-init-once <<DATA
 
