@@ -57,6 +57,9 @@ function show_env() {
 
     echo DIB_NVIDIA_CUDNN_LIBRARY=$DIB_NVIDIA_CUDNN_LIBRARY
     echo
+
+    echo DIB_LICENSE_ENDPOINT=$DIB_LICENSE_ENDPOINT
+    echo
 }
 
 function _common_build_options() {
@@ -99,6 +102,7 @@ function build_license_dev() {
     export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
     export DIB_CLOUD_INIT_PATCH_BOOTCMD=0
     export DIB_CLOUD_INIT_PATCH_RUNCMD=1
+    export DIB_LICENSE_ENDPOINT=https://192.168.240.56.xip.io/wsgi
 
     show_env
 
