@@ -156,6 +156,9 @@ function build_vm_c7_sc_dev() {
     unset DIB_CLOUD_INIT_DATASOURCES
     #export DIB_CLOUD_INIT_DATASOURCES=ConfigDrive
 
+    export DIB_DEV_USER_USERNAME=devuser    # used by sc-dashboard
+    export DIB_DEV_USER_PASSWORD=Abc12345   # used by sc-dashboard
+
     export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
     export DIB_CLOUD_INIT_PATCH_BOOTCMD=0
     export DIB_CLOUD_INIT_PATCH_RUNCMD=1
