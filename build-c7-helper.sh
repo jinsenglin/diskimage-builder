@@ -148,6 +148,7 @@ function build_vm_c7() {
 
 function build_vm_c7_sc() {
     _common_build_options
+    export ELEMENTS_PATH=$ELEMENTS_PATH:/opt/3rd-party-dib-elements
 
     unset DIB_BOOTLOADER_DEFAULT_CMDLINE
     #export DIB_BOOTLOADER_DEFAULT_CMDLINE="console=tty1 console=ttyS1,115200 crashkernel=auto"
