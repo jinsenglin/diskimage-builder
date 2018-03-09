@@ -3,7 +3,7 @@
 set -e
 set -o pipefail
 
-fn_array=(show-env build-cloud_init_dev build-license_dev build-vm_c7 build-bm_c7 build-bm_c7_k80 build-bm_c7_k80_nvidia_docker)
+fn_array=(show-env build-cloud_init_dev build-license_dev build-vm_c7 build-vm_c7_sc build-bm_c7 build-bm_c7_k80 build-bm_c7_k80_nvidia_docker)
 
 function show_env() {
     echo tty
@@ -145,6 +145,32 @@ function build_vm_c7() {
         disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch -o vm-c7
     fi
 }
+
+function build_vm_c7_sc() {
+    _common_build_options
+
+    unset DIB_BOOTLOADER_DEFAULT_CMDLINE
+    #export DIB_BOOTLOADER_DEFAULT_CMDLINE="console=tty1 console=ttyS1,115200 crashkernel=auto"
+
+    export DIB_CLOUD_INIT_DATASOURCES=ConfigDrive
+    export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
+    export DIB_CLOUD_INIT_PATCH_BOOTCMD=0
+    export DIB_CLOUD_INIT_PATCH_RUNCMD=1
+    export DIB_LICENSE_ENDPOINT=https://192.168.240.56.xip.io/wsgi
+    export DIB_LICENSE_CLIENT_CERT=http://192.168.240.56.xip.io/client.cert.pem
+    export DIB_LICENSE_CLIENT_KEY=http://192.168.240.56.xip.io/client.key.pem
+    export DIB_LICENSE_VAULT=http://192.168.240.56.xip.io/src.des3
+
+    show_env
+
+    echo -n "Build ? (default: y) [y/n] "
+    read ans
+
+    if [ ${ans:-y} == "y" ]; then
+        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch license ansible sc-dashboard -o vm-c7-sc
+    fi
+}
+
 
 function build_bm_c7() {
     _common_build_options
