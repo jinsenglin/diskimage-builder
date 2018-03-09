@@ -43,6 +43,9 @@ function show_env() {
     echo DIB_CLOUD_INIT_PATCH_RUNCMD=$DIB_CLOUD_INIT_PATCH_RUNCMD
     echo
 
+    echo DIB_CLOUD_INIT_PATCH_RUNCMD_VERSION=$DIB_CLOUD_INIT_PATCH_RUNCMD_VERSION
+    echo
+
     echo DIB_CLOUD_INIT_DATASOURCES=$DIB_CLOUD_INIT_DATASOURCES
     echo
 
@@ -162,6 +165,7 @@ function build_vm_c7_sc_dev() {
     export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
     export DIB_CLOUD_INIT_PATCH_BOOTCMD=0
     export DIB_CLOUD_INIT_PATCH_RUNCMD=1
+    export DIB_CLOUD_INIT_PATCH_RUNCMD_VERSION=v2
     export DIB_LICENSE_ENDPOINT=https://192.168.240.56.xip.io/wsgi
     export DIB_LICENSE_CLIENT_CERT=http://192.168.240.56.xip.io/client.cert.pem
     export DIB_LICENSE_CLIENT_KEY=http://192.168.240.56.xip.io/client.key.pem

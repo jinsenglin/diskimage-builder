@@ -17,7 +17,11 @@ if [ ${DIB_CLOUD_INIT_PATCH_BOOTCMD:-0} -gt 0 ]; then
 fi
 
 if [ ${DIB_CLOUD_INIT_PATCH_RUNCMD:-0} -gt 0 ]; then
-    patch -F 0 -f /usr/lib/python2.7/site-packages/cloudinit/config/cc_runcmd.py < $(dirname $0)/cc_runcmd.py.patch
+    if [ ${DIB_CLOUD_INIT_PATCH_RUNCMD_VERSION:-v1} == v1 ]; then
+        patch -F 0 -f /usr/lib/python2.7/site-packages/cloudinit/config/cc_runcmd.py < $(dirname $0)/cc_runcmd.py.patch
+    else
+        patch -F 0 -f /usr/lib/python2.7/site-packages/cloudinit/config/cc_runcmd.py < $(dirname $0)/cc_runcmd.py.patch.${DIB_CLOUD_INIT_PATCH_RUNCMD_VERSION}
+    fi
 fi
 #
 # NOTE: this patch file is created by e.g. `diff -Naur cc_set_passwords.py cc_set_passwords_rev.py > cc_set_passwords.py.patch`.
