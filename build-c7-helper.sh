@@ -171,6 +171,10 @@ function build_vm_c7_sc_dev() {
     export DIB_LICENSE_CLIENT_KEY=http://192.168.240.56.xip.io/client.key.pem
     export DIB_LICENSE_VAULT=http://192.168.240.56.xip.io/src.des3
 
+    # 3rd-party-dib-elements
+    export DIB_SC_DASHBOARD=http://localhost:8000/cascade-dashboard-1.1.6-rc.105-saas.tgz
+    export DIB_SC_DASHBOARD_RUN_AFTER_INIT=false
+
     show_env
 
     echo -n "Build ? (default: y) [y/n] "
