@@ -23,7 +23,7 @@ function mk_safebox() {
     cd ..
     rm -rf dib-element
 
-    tar -zcvf - safebox | openssl des3 -salt -k $SAFEBOX_PASS | dd of=safebox.des3
+    tar -zcvf - safebox | openssl des3 -salt -k "$SAFEBOX_PASS" | dd of=safebox.des3
     rm -rf safebox
 
     echo "File 'safebox.des3' is generated."
