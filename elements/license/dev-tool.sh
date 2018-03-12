@@ -31,7 +31,7 @@ function mk_safebox() {
 
 function rm_puzzles() {
     # export LIBGUESTFS_BACKEND=direct
-    # guestfish -a $RAW_IMAGE -i rm -rf /mnt/root/cascade-dashboard-dib-ansible
+    # guestfish -a $RAW_IMAGE -i rmdir /mnt/root/cascade-dashboard-dib-ansible
     # guestfish -a $RAW_IMAGE -i rm /mnt/root/install-sc-dashboard.sh
 
     # -----------------------------
