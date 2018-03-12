@@ -182,10 +182,46 @@ function build_vm_c7_sc_dev() {
 
     if [ ${ans:-y} == "y" ]; then
         disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud cloud-init-patch license ansible sc-dashboard -o vm-c7-sc-dev --image-size 4
-        #disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch license ansible sc-dashboard -o vm-c7-sc --image-size 3
+        #disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch license ansible sc-dashboard -o vm-c7-sc --image-size 4
     fi
 }
 
+function build_vm_c7_sc() {
+    _common_build_options
+    export ELEMENTS_PATH=$ELEMENTS_PATH:/opt/3rd-party-dib-elements
+
+    unset DIB_BOOTLOADER_DEFAULT_CMDLINE
+    #export DIB_BOOTLOADER_DEFAULT_CMDLINE="console=tty1 console=ttyS1,115200 crashkernel=auto"
+
+    #unset DIB_CLOUD_INIT_DATASOURCES
+    export DIB_CLOUD_INIT_DATASOURCES=ConfigDrive
+
+    export DIB_DEV_USER_USERNAME=devuser    # used by sc-dashboard
+    export DIB_DEV_USER_PASSWORD=Abc12345   # used by sc-dashboard
+
+    export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
+    export DIB_CLOUD_INIT_PATCH_BOOTCMD=0
+    export DIB_CLOUD_INIT_PATCH_RUNCMD=1
+    export DIB_CLOUD_INIT_PATCH_RUNCMD_VERSION=v2
+    export DIB_LICENSE_ENDPOINT=https://192.168.240.56.xip.io/wsgi
+    export DIB_LICENSE_CLIENT_CERT=http://192.168.240.56.xip.io/client.cert.pem
+    export DIB_LICENSE_CLIENT_KEY=http://192.168.240.56.xip.io/client.key.pem
+    export DIB_LICENSE_VAULT=http://192.168.240.56.xip.io/src.des3
+
+    # 3rd-party-dib-elements
+    export DIB_SC_DASHBOARD=http://localhost:8000/cascade-dashboard-1.1.6-rc.105-saas.tgz
+    export DIB_SC_DASHBOARD_RUN_AFTER_INIT=false
+
+    show_env
+
+    echo -n "Build ? (default: y) [y/n] "
+    read ans
+
+    if [ ${ans:-y} == "y" ]; then
+        #disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud cloud-init-patch license ansible sc-dashboard -o vm-c7-sc-dev --image-size 4
+        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch license ansible sc-dashboard -o vm-c7-sc --image-size 4
+    fi
+}
 
 function build_bm_c7() {
     _common_build_options
