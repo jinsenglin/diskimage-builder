@@ -31,6 +31,9 @@ exec 2>&3
     dd if=/opt/src.des3 | openssl des3 -d -k "\$PASS" | tar zxf - -C /opt
     # mv /opt/src /path/to/target
 
+    bash /root/install-sc-dashboard.sh
+    # bash /root/install-sc-engine.sh
+
     echo End
 
 exec 3>&-
