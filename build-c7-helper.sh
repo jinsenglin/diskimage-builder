@@ -3,7 +3,7 @@
 set -e
 set -o pipefail
 
-fn_array=(show-env build-cloud_init_dev build-license_dev build-vm_c7 build-vm_c7_sc_dev build-bm_c7 build-bm_c7_k80 build-bm_c7_k80_nvidia_docker)
+fn_array=(show-env build-cloud_init_dev build-license_dev build-vm_c7 build-vm_c7_sc_dev build-vm_c7_sc build-bm_c7 build-bm_c7_k80 build-bm_c7_k80_nvidia_docker)
 
 function show_env() {
     echo tty
