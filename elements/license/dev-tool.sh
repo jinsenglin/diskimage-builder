@@ -15,7 +15,7 @@ E_VERSION=${E_VERSION:-HEAD}
 function mk_safebox() {
     mkdir safebox
 
-    git clone git@172.16.100.91:tonycheng/dib-element.git
+    git clone http://172.16.100.91/tonycheng/dib-element.git
     cd dib-element
         git checkout $D_VERSION
         mv sc-dashboard/static/root/cascade-dashboard-dib-ansible ../safebox/cascade-dashboard-dib-ansible
