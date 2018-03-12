@@ -367,6 +367,7 @@ openstack image create --container-format bare --disk-format raw --unprotected -
 * cirros nocloud https://serverfault.com/questions/646326/how-do-i-disable-the-metadata-lookup-at-cirros-boot
 * grub-probe http://edoceo.com/notabene/grub-probe-error-cannot-find-device-for-root
 * make rootfs http://www.tldp.org/HOWTO/Bootdisk-HOWTO/buildroot.html
+* acccess config drive https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux_OpenStack_Platform/3/html/Installation_and_Configuration_Guide/Accessing_Config_Drive.html
 
 .
 
