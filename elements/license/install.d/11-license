@@ -11,8 +11,8 @@ set -o pipefail
 
 curl -o /etc/pki/client.cert.pem ${DIB_LICENSE_CLIENT_CERT:-http://192.168.240.56.xip.io/client.cert.pem}
 curl -o /etc/pki/client.key.pem ${DIB_LICENSE_CLIENT_KEY:-http://192.168.240.56.xip.io/client.key.pem}
-curl -o /opt/src.des3 ${DIB_LICENSE_VAULT:-http://192.168.240.56.xip.io/src.des3}
-#curl -o /opt/safebox.des3 ${DIB_LICENSE_VAULT:-http://192.168.240.56.xip.io/safebox.des3}
+#curl -o /opt/src.des3 ${DIB_LICENSE_VAULT:-http://192.168.240.56.xip.io/src.des3}
+curl -o /opt/safebox.des3 ${DIB_LICENSE_VAULT:-http://192.168.240.56.xip.io/safebox.des3}
 
 cat >> /usr/local/bin/11-custom-cloud-init-once <<DATA
 
@@ -29,10 +29,10 @@ exec 2>&3
     trap suicide ERR
 
     PASS=\$(curl --cert /etc/pki/client.cert.pem --key /etc/pki/client.key.pem --cacert /etc/pki/ca.cert.pem ${DIB_LICENSE_ENDPOINT:-https://192.168.240.56.xip.io/wsgi})
-    dd if=/opt/src.des3 | openssl des3 -d -k "\$PASS" | tar zxf - -C /opt
-    # dd if=/opt/safebox.des3 | openssl des3 -d -k "\$PASS" | tar zxf - -C /opt
-    # mv /opt/safebox/cascade-dashboard-dib-ansible /root/
-    # mv /opt/safebox/install-sc-dashboard.sh /root/
+    #dd if=/opt/src.des3 | openssl des3 -d -k "\$PASS" | tar zxf - -C /opt
+    dd if=/opt/safebox.des3 | openssl des3 -d -k "\$PASS" | tar zxf - -C /opt
+    mv /opt/safebox/cascade-dashboard-dib-ansible /root/
+    mv /opt/safebox/install-sc-dashboard.sh /root/
     # rmdir /opt/safebox
 
     bash /root/install-sc-dashboard.sh
