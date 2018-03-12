@@ -169,7 +169,7 @@ function build_vm_c7_sc_dev() {
     export DIB_LICENSE_ENDPOINT=https://192.168.240.56.xip.io/wsgi
     export DIB_LICENSE_CLIENT_CERT=http://192.168.240.56.xip.io/client.cert.pem
     export DIB_LICENSE_CLIENT_KEY=http://192.168.240.56.xip.io/client.key.pem
-    export DIB_LICENSE_VAULT=http://192.168.240.56.xip.io/src.des3
+    export DIB_LICENSE_VAULT=http://192.168.240.56.xip.io/safebox.des3
 
     # 3rd-party-dib-elements
     export DIB_SC_DASHBOARD=http://localhost:8000/cascade-dashboard-1.1.6-rc.105-saas.tgz
@@ -206,7 +206,7 @@ function build_vm_c7_sc() {
     export DIB_LICENSE_ENDPOINT=https://192.168.240.56.xip.io/wsgi
     export DIB_LICENSE_CLIENT_CERT=http://192.168.240.56.xip.io/client.cert.pem
     export DIB_LICENSE_CLIENT_KEY=http://192.168.240.56.xip.io/client.key.pem
-    export DIB_LICENSE_VAULT=http://192.168.240.56.xip.io/src.des3
+    export DIB_LICENSE_VAULT=http://192.168.240.56.xip.io/safebox.des3
 
     # 3rd-party-dib-elements
     export DIB_SC_DASHBOARD=http://localhost:8000/cascade-dashboard-1.1.6-rc.105-saas.tgz
