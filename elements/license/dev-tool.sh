@@ -36,6 +36,7 @@ function rm_puzzles() {
 
         rm -rf /mnt/root/cascade-dashboard-dib-ansible
         rm -rf /mnt/root/install-sc-dashboard.sh
+        ls /mnt/root/ # check again
 
     umount /mnt
     kpartx -d /dev/loop0
