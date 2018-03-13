@@ -15,13 +15,24 @@ E_VERSION=${E_VERSION:-HEAD}
 function mk_safebox() {
     mkdir safebox
 
-    git clone http://172.16.100.91/tonycheng/dib-element.git
-    cd dib-element
-        git checkout $D_VERSION
-        mv sc-dashboard/static/root/cascade-dashboard-dib-ansible ../safebox/cascade-dashboard-dib-ansible
-        mv sc-dashboard/static/root/install-sc-dashboard.sh ../safebox/install-sc-dashboard.sh
-    cd ..
-    rm -rf dib-element
+#    git clone http://172.16.100.91/tonycheng/dib-element.git
+#    cd dib-element
+#        git checkout $D_VERSION
+#        mv sc-dashboard/static/root/cascade-dashboard-dib-ansible ../safebox/cascade-dashboard-dib-ansible
+#        mv sc-dashboard/static/root/install-sc-dashboard.sh ../safebox/install-sc-dashboard.sh
+#    cd ..
+#    rm -rf dib-element
+
+    losetup /dev/loop0 $RAW_IMAGE
+    kpartx -av /dev/loop0
+    mount /dev/mapper/loop0p1 /mnt
+
+        mv /mnt/root/cascade-dashboard-dib-ansible safebox/
+        mv /mnt/root/install-sc-dashboard.sh safebox/
+
+    umount /mnt
+    kpartx -d /dev/loop0
+    losetup -d /dev/loop0
 
     tar -zcvf - safebox | openssl des3 -salt -k "$SAFEBOX_PASS" | dd of=safebox.des3
     rm -rf safebox
