@@ -27,27 +27,7 @@ exec 2>&3
 
         # clean runtime -----------
 
-        if [ -d /home/grafana ]; then
-            rm -rf /home/grafana
-        fi
-
-        if [ -f /usr/lib/systemd/system/mariadb.service ]; then
-            rm -f /usr/lib/systemd/system/mariadb.service
-        fi
-
         # clean puzzles -----------
-
-        if [ -d /opt/savebox ]; then
-            rm -rf /opt/savebox
-        fi
-
-        if [ -f /root/cascade-dashboard-dib-ansible ]; then
-            rm -rf /root/cascade-dashboard-dib-ansible
-        fi
-
-        if [ -f /root/install-sc-dashboard.sh ]; then
-            rm -f /root/install-sc-dashboard.sh
-        fi
 
         # -------------------------
 
@@ -57,12 +37,11 @@ exec 2>&3
 
     PASS=\$(curl --cert /etc/pki/client.cert.pem --key /etc/pki/client.key.pem --cacert /etc/pki/ca.cert.pem ${DIB_LICENSE_ENDPOINT:-https://192.168.240.56.xip.io/wsgi})
     dd if=/opt/safebox.des3 | openssl des3 -d -k "\$PASS" | tar zxf - -C /opt
-    mv /opt/safebox/cascade-dashboard-dib-ansible /root/
-    mv /opt/safebox/install-sc-dashboard.sh /root/
-    # mv /opt/safebox/install-sc-engine.sh /root/
 
-    bash /root/install-sc-dashboard.sh
-    # bash /root/install-sc-engine.sh
+    function activate() {
+        rm -rf /opt/savebox
+    }
+    activate
 
     echo End
 
