@@ -174,6 +174,7 @@ function build_vm_c7_sc_dev() {
     # 3rd-party-dib-elements
     export DIB_SC_DASHBOARD=http://localhost:8000/cascade-dashboard-1.1.6-rc.105-saas.tgz
     export DIB_SC_DASHBOARD_RUN_AFTER_INIT=false
+    export DIB_SC_DASHBOARD_PROTECTED=true
 
     show_env
 
@@ -211,6 +212,7 @@ function build_vm_c7_sc() {
     # 3rd-party-dib-elements
     export DIB_SC_DASHBOARD=http://localhost:8000/cascade-dashboard-1.1.6-rc.105-saas.tgz
     export DIB_SC_DASHBOARD_RUN_AFTER_INIT=false
+    export DIB_SC_DASHBOARD_PROTECTED=true
 
     show_env
 
