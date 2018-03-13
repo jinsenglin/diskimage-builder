@@ -182,6 +182,7 @@ function build_vm_c7_sc_dev() {
     read ans
 
     if [ ${ans:-y} == "y" ]; then
+        git checkout sc -- elements/license/install.d/11-license
         disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud cloud-init-patch license ansible sc-dashboard -o vm-c7-sc-dev --image-size 4
         #disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch license ansible sc-dashboard -o vm-c7-sc --image-size 4
     fi
@@ -220,6 +221,7 @@ function build_vm_c7_sc() {
     read ans
 
     if [ ${ans:-y} == "y" ]; then
+        git checkout sc -- elements/license/install.d/11-license
         #disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud cloud-init-patch license ansible sc-dashboard -o vm-c7-sc-dev --image-size 4
         disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch license ansible sc-dashboard -o vm-c7-sc --image-size 4
     fi
