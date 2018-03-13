@@ -9,7 +9,7 @@ if [ $# -lt 1 ]; then
 fi
 
 SAFEBOX_PASS=${SAFEBOX_PASS:-CN: client}
-D_VERSION=${D_VERSION:-0948b87ab6f2bcb6e492cc6c082e5f43403ba256}
+D_VERSION=${D_VERSION:-c42b18deac6732dceff4f5bad60784793477a45d}
 E_VERSION=${E_VERSION:-HEAD}
 
 function mk_safebox() {
