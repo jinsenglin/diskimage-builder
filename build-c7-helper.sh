@@ -201,15 +201,6 @@ function build_vm_c7_sc_1() {
     export DIB_DEV_USER_USERNAME=devuser    # used by sc-dashboard
     export DIB_DEV_USER_PASSWORD=Abc12345   # used by sc-dashboard
 
-    export DIB_CLOUD_INIT_PATCH_SET_PASSWORDS=1
-    export DIB_CLOUD_INIT_PATCH_BOOTCMD=0
-    export DIB_CLOUD_INIT_PATCH_RUNCMD=1
-    export DIB_CLOUD_INIT_PATCH_RUNCMD_VERSION=v2
-    export DIB_LICENSE_ENDPOINT=https://192.168.240.56.xip.io/wsgi
-    export DIB_LICENSE_CLIENT_CERT=http://192.168.240.56.xip.io/client.cert.pem
-    export DIB_LICENSE_CLIENT_KEY=http://192.168.240.56.xip.io/client.key.pem
-    export DIB_LICENSE_VAULT=http://192.168.240.56.xip.io/safebox.des3
-
     # 3rd-party-dib-elements
     export DIB_SC_DASHBOARD=http://localhost:8000/cascade-dashboard-1.1.6-rc.105-saas.tgz
     export DIB_SC_DASHBOARD_RUN_AFTER_INIT=false
@@ -221,9 +212,7 @@ function build_vm_c7_sc_1() {
     read ans
 
     if [ ${ans:-y} == "y" ]; then
-        git checkout sc -- elements/license/install.d/11-license
-        #disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-nocloud cloud-init-patch license ansible sc-dashboard -o vm-c7-sc-dev --image-size 4
-        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser cloud-init-patch license ansible sc-dashboard -o vm-c7-sc-1 --image-size 4
+        disk-image-create -t raw centos7 vm dhcp-all-interfaces selinux-permissive devuser ansible sc-dashboard -o vm-c7-sc-1
     fi
 }
 
