@@ -41,12 +41,26 @@ function rm_puzzles() {
     mount /dev/mapper/loop0p1 /mnt
 
         rm -rf /mnt/root/cascade-dashboard-dib-ansible
-        rm -rf /mnt/root/install-sc-dashboard.sh
-        touch /mnt/root/.secured
+        rm -f /mnt/root/install-sc-dashboard.sh
 
     umount /mnt
     kpartx -d /dev/loop0
     losetup -d /dev/loop0
+
+    # ------------------------------
+
+    #losetup /dev/loop0 $RAW_IMAGE
+    #kpartx -av /dev/loop0
+    #mount /dev/mapper/loop0p1 /mnt
+
+    #    find /mnt/root/cascade-dashboard-dib-ansible -type f | while read line; do dd if=/dev/zero of=$line bs=1k count=1024; done
+    #    rm -rf /mnt/root/cascade-dashboard-dib-ansible
+    #    dd if=/dev/zero of=/mnt/root/install-sc-dashboard.sh bs=1k count=1024
+    #    rm -f /mnt/root/install-sc-dashboard.sh
+
+    #umount /mnt
+    #kpartx -d /dev/loop0
+    #losetup -d /dev/loop0
 
     # ------------------------------
 
