@@ -30,20 +30,29 @@ function mk_safebox() {
 }
 
 function rm_puzzles() {
-    # export LIBGUESTFS_BACKEND=direct
-    # guestfish -a $RAW_IMAGE -i rmdir /mnt/root/cascade-dashboard-dib-ansible
-    # guestfish -a $RAW_IMAGE -i rm /mnt/root/install-sc-dashboard.sh
+    export LIBGUESTFS_BACKEND=direct
+    guestfish -a $RAW_IMAGE -i rmdir /mnt/root/cascade-dashboard-dib-ansible
+    guestfish -a $RAW_IMAGE -i rm /mnt/root/install-sc-dashboard.sh
 
     # -----------------------------
+
+    #losetup /dev/loop0 $RAW_IMAGE
+    #kpartx -av /dev/loop0
+    #mount /dev/mapper/loop0p1 /mnt
+
+    #    rm -rf /mnt/root/cascade-dashboard-dib-ansible
+    #    rm -rf /mnt/root/install-sc-dashboard.sh
+
+    #umount /mnt
+    #kpartx -d /dev/loop0
+    #losetup -d /dev/loop0
+
+    # ------------------------------
 
     losetup /dev/loop0 $RAW_IMAGE
     kpartx -av /dev/loop0
     mount /dev/mapper/loop0p1 /mnt
-
-        rm -rf /mnt/root/cascade-dashboard-dib-ansible
-        rm -rf /mnt/root/install-sc-dashboard.sh
-        ls /mnt/root/ # check again
-
+    ls /mnt/root/ # check again
     umount /mnt
     kpartx -d /dev/loop0
     losetup -d /dev/loop0
