@@ -33,12 +33,16 @@ exec 2>&3
 
         echo End cleaning
     }
-    trap cleanup ERR
-
-    PASS=\$(curl --cert /etc/pki/client.cert.pem --key /etc/pki/client.key.pem --cacert /etc/pki/ca.cert.pem ${DIB_LICENSE_ENDPOINT:-https://192.168.240.56.xip.io/wsgi})
-    dd if=/opt/safebox.des3 | openssl des3 -d -k "\$PASS" | tar zxf - -C /opt
 
     function activate() {
+        trap cleanup ERR
+
+        PASS=\$(curl --cert /etc/pki/client.cert.pem --key /etc/pki/client.key.pem --cacert /etc/pki/ca.cert.pem ${DIB_LICENSE_ENDPOINT:-https://192.168.240.56.xip.io/wsgi})
+        dd if=/opt/safebox.des3 | openssl des3 -d -k "\$PASS" | tar zxf - -C /opt
+
+        # custom script -----------
+        # -------------------------
+
         rm -rf /opt/savebox
     }
     activate
