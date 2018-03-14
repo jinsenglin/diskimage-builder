@@ -23,7 +23,8 @@ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:-}:/usr/local/ssl/lib
 ./configure --prefix=/usr/local/curl/ --without-nss --with-ssl=/usr/local/ssl/
 make && make install
 
-#ln -s /usr/local/curl/bin/curl /usr/bin/curl
 cp /usr/local/curl/bin/curl /usr/bin/curl
 curl --version
+
+echo 'export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:-}:/usr/local/ssl/lib' >> /etc/profile
 #
