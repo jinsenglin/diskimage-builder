@@ -115,6 +115,7 @@ function build_license_dev() {
     export DIB_CLOUD_INIT_PATCH_BOOTCMD=0
     export DIB_CLOUD_INIT_PATCH_RUNCMD=1
     export DIB_LICENSE_ENDPOINT=https://192.168.240.56.xip.io/wsgi
+    export DIB_LICENSE_CLIENT_CA=http://192.168.240.56.xip.io/ca.cert.pem
     export DIB_LICENSE_CLIENT_CERT=http://192.168.240.56.xip.io/client.cert.pem
     export DIB_LICENSE_CLIENT_KEY=http://192.168.240.56.xip.io/client.key.pem
     export DIB_LICENSE_VAULT=http://192.168.240.56.xip.io/src.des3
