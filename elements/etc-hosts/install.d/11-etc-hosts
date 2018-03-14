@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ ${DIB_DEBUG_TRACE:-0} -gt 0 ]; then
+    set -x
+fi
+set -eu
+set -o pipefail
+
+# update /etc/hosts
+#
+echo ${DIB_ETC_HOSTS_RECORD} >> /etc/hosts
+#
