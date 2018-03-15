@@ -32,5 +32,6 @@ curl --version
 # for non-login shell e.g. sudo su
 #echo 'export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:-}:/usr/local/ssl/lib' >> /root/.bashrc
 
-echo '/usr/local/ssl/lib' > /etc/ld.so.conf.d/openssl.conf 
+echo '/usr/local/ssl/lib' > /etc/ld.so.conf.d/openssl.conf
+ldconfig
 #
