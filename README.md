@@ -16,7 +16,7 @@ sudo su
 yum -y install epel-release
 yum -y update
 yum -y install python-pip qemu-img
-pip install diskimage-builder
+pip install diskimage-builder==2.10.1
 #
 
 # pin base image version
