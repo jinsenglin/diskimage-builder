@@ -26,5 +26,10 @@ make && make install
 cp /usr/local/curl/bin/curl /usr/bin/curl
 curl --version
 
+# for login shell
 echo 'export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:-}:/usr/local/ssl/lib' >> /etc/profile
+#echo 'export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:-}:/usr/local/ssl/lib' >> /root/.bash_profile
+
+# for non-login shell e.g. sudo su
+echo 'export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:-}:/usr/local/ssl/lib' >> /root/.bashrc
 #
