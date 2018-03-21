@@ -14,14 +14,14 @@ curl -o openssl-1.0.2l.tar.gz  https://www.openssl.org/source/openssl-1.0.2l.tar
 tar -xzvf openssl-1.0.2l.tar.gz
 cd openssl-1.0.2l
 ./config --shared 
-make && make install
+make -j && make install
 
 curl -o curl-7.55.1.tar.gz https://curl.haxx.se/download/curl-7.55.1.tar.gz
 tar -xzvf curl-7.55.1.tar.gz
 cd curl-7.55.1
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:-}:/usr/local/ssl/lib
 ./configure --prefix=/usr/local/curl/ --without-nss --with-ssl=/usr/local/ssl/
-make && make install
+make -j && make install
 
 cp /usr/local/curl/bin/curl /usr/bin/curl
 curl --version
